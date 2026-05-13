@@ -158,26 +158,44 @@ nav {
   font-size: 0.72rem; color: rgba(255,255,255,0.6);
 }
 
-/* OVERVIEW */
+/* ── STEP 1: OVERVIEW stat cards ── */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
-.stat-card {
+button.stat-card {
+  width: 100%; text-align: center; font-family: inherit; font-size: inherit;
+  appearance: none; -webkit-appearance: none; cursor: pointer;
   background: var(--white); border-radius: var(--radius); padding: 30px;
-  border: 1px solid var(--gray-soft); text-align: center; transition: all .25s ease;
+  border: 2px solid var(--gray-soft); transition: all .25s ease; position: relative;
 }
-.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--sky); }
+button.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--sky); }
+button.stat-card[aria-expanded="true"] { border-color: var(--navy); box-shadow: var(--shadow-hover); }
 .stat-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
 .stat-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
 .stat-number .unit { font-size: 1.1rem; color: var(--red); }
 .stat-label { font-size: 0.85rem; font-weight: 700; color: var(--navy-soft); margin-bottom: 8px; }
 .stat-desc { font-size: 0.78rem; color: var(--navy-soft); opacity: 0.65; line-height: 1.5; }
+.stat-hint { font-size: 0.7rem; color: var(--red); margin-top: 10px; opacity: 0.75; }
+.stat-detail-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease;
+  text-align: left;
+}
+button.stat-card[aria-expanded="true"] .stat-detail-body { max-height: 100px; }
+.stat-detail-text {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--gray-soft);
+  font-size: 0.82rem; color: var(--navy); line-height: 1.65;
+}
 
-/* CITIES */
+/* ── STEP 2: CITIES modal ── */
 .cities-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.city-card {
+button.city-card {
+  width: 100%; text-align: left; font-family: inherit; font-size: inherit;
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding: 0;
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
   border: 1px solid var(--gray-soft); transition: all .28s ease; background: var(--white);
+  display: block;
 }
-.city-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+button.city-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 .city-banner {
   height: 120px; display: flex; align-items: center; justify-content: center;
   font-size: 3rem; position: relative;
@@ -186,8 +204,8 @@ nav {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4) 100%);
 }
-.city-banner.ny { background: linear-gradient(135deg, #0F1B3D 0%, #1B2A4A 100%); }
-.city-banner.dc { background: linear-gradient(135deg, #1B2A4A 0%, #C41E3A 100%); }
+.city-banner.ny     { background: linear-gradient(135deg, #0F1B3D 0%, #1B2A4A 100%); }
+.city-banner.dc     { background: linear-gradient(135deg, #1B2A4A 0%, #C41E3A 100%); }
 .city-banner.philly { background: linear-gradient(135deg, #7B3F00 0%, #C8860A 100%); }
 .city-banner.boston { background: linear-gradient(135deg, #1A3A1A 0%, #2D6A2D 100%); }
 .city-body { padding: 20px; }
@@ -196,8 +214,29 @@ nav {
 .city-desc { font-size: 0.8rem; color: var(--navy-soft); line-height: 1.55; }
 .city-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
 .city-tag { padding: 3px 8px; background: var(--cream); border-radius: 10px; font-size: 0.72rem; color: var(--navy-soft); border: 1px solid var(--gray-soft); }
+.city-click-hint { font-size: 0.7rem; color: var(--red); margin-top: 10px; opacity: 0.75; }
 
-/* ITINERARY */
+dialog#cityModal {
+  border: none; border-radius: var(--radius); padding: 0;
+  max-width: 520px; width: 90%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+}
+dialog#cityModal::backdrop { background: rgba(0,0,0,0.5); }
+.modal-inner { padding: 32px; }
+.modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.modal-badge { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+.modal-city-name { font-family: var(--font-serif); font-size: 1.4rem; color: var(--navy); }
+.modal-close {
+  background: var(--cream); border: 1px solid var(--gray-soft); border-radius: 50%;
+  width: 34px; height: 34px; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background .2s ease; margin-left: 12px; font-family: inherit;
+}
+.modal-close:hover { background: var(--gray-soft); }
+.modal-body { margin-top: 18px; }
+.modal-body p { font-size: 0.9rem; color: var(--navy-soft); line-height: 1.85; }
+
+/* ── STEP 3: ITINERARY accordion ── */
 .timeline { position: relative; max-width: 820px; margin: 0 auto; }
 .timeline::before {
   content: ''; position: absolute; left: 40px; top: 0; bottom: 0;
@@ -226,24 +265,40 @@ nav {
   white-space: nowrap;
 }
 .card-city-badge.transit { background: var(--red); }
-.card-city-badge.dc { background: #8B0000; }
-.card-city-badge.philly { background: #7B3F00; }
-.card-city-badge.boston { background: #1A3A1A; }
+.card-city-badge.dc      { background: #8B0000; }
+.card-city-badge.philly  { background: #7B3F00; }
+.card-city-badge.boston  { background: #1A3A1A; }
 .timeline-card h3 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
 .timeline-card p { font-size: 0.86rem; color: var(--navy-soft); line-height: 1.7; }
 .card-spots { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
 .spot-chip { padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
-.chip-blue { background: rgba(27,42,74,0.08); color: var(--navy-soft); }
-.chip-red { background: rgba(196,30,58,0.1); color: #8a0020; }
-.chip-gold { background: rgba(212,168,67,0.15); color: #7a5800; }
-.chip-green { background: rgba(45,106,45,0.1); color: #1a5c1a; }
+.chip-blue  { background: rgba(27,42,74,0.08);  color: var(--navy-soft); }
+.chip-red   { background: rgba(196,30,58,0.1);  color: #8a0020; }
+.chip-gold  { background: rgba(212,168,67,0.15); color: #7a5800; }
+.chip-green { background: rgba(45,106,45,0.1);  color: #1a5c1a; }
 .transport-tag {
   display: inline-flex; align-items: center; gap: 5px; margin-top: 12px;
   background: var(--sky); border-radius: 12px; padding: 5px 12px;
   font-size: 0.78rem; font-weight: 600; color: var(--navy-soft);
 }
+.accordion-btn {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  background: none; border: 1px solid var(--gray-soft); border-radius: 20px; padding: 5px 14px;
+  font-size: 0.78rem; font-weight: 600; color: var(--navy-soft); cursor: pointer;
+  transition: all .2s ease; font-family: inherit;
+}
+.accordion-btn:hover { background: var(--cream); border-color: var(--navy-soft); color: var(--navy); }
+.accordion-btn .arr { transition: transform .3s ease; display: inline-block; }
+.accordion-btn[aria-expanded="true"] .arr { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+.accordion-body.open { max-height: 400px; }
+.accordion-content {
+  padding-top: 14px; margin-top: 12px;
+  font-size: 0.84rem; color: var(--navy-soft); line-height: 1.78;
+  border-top: 1px solid var(--gray-soft);
+}
 
-/* WEATHER */
+/* ── STEP 4: WEATHER expand ── */
 .weather-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
 .weather-card {
   background: var(--white); border-radius: var(--radius); padding: 26px;
@@ -256,8 +311,24 @@ nav {
 .weather-desc { font-size: 0.82rem; color: var(--navy-soft); line-height: 1.55; }
 .weather-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
 .weather-tag { padding: 2px 8px; background: var(--sky); border-radius: 10px; font-size: 0.72rem; color: var(--navy-soft); }
+.weather-expand-btn {
+  display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px;
+  background: none; border: 1px solid var(--gray-soft); border-radius: 20px; padding: 5px 14px;
+  font-size: 0.75rem; font-weight: 600; color: var(--navy-soft); cursor: pointer;
+  transition: all .2s ease; width: 100%; font-family: inherit;
+}
+.weather-expand-btn:hover { background: var(--sky); border-color: var(--navy-soft); }
+.weather-expand-btn .arr { transition: transform .3s ease; display: inline-block; }
+.weather-expand-btn[aria-expanded="true"] .arr { transform: rotate(180deg); }
+.weather-detail-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.weather-detail-body.open { max-height: 200px; }
+.weather-detail-text {
+  padding-top: 12px; margin-top: 12px;
+  border-top: 1px solid var(--gray-soft);
+  font-size: 0.82rem; color: var(--navy-soft); line-height: 1.65;
+}
 
-/* BUDGET */
+/* ── STEP 5: BUDGET row expand ── */
 .budget-table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
 table.budget-table { width: 100%; border-collapse: collapse; background: var(--white); }
 .budget-table th {
@@ -265,47 +336,96 @@ table.budget-table { width: 100%; border-collapse: collapse; background: var(--w
   font-size: 0.82rem; font-weight: 700; text-align: left; letter-spacing: 0.04em;
 }
 .budget-table th:first-child { border-radius: var(--radius) 0 0 0; }
-.budget-table th:last-child { border-radius: 0 var(--radius) 0 0; }
+.budget-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
 .budget-table td { padding: 14px 20px; font-size: 0.88rem; border-bottom: 1px solid var(--gray-soft); color: var(--navy-soft); }
 .budget-table tr:last-child td { border-bottom: none; }
-.budget-table tr:hover td { background: var(--cream); }
 .budget-table .total-row td { font-weight: 700; color: var(--navy); background: var(--cream); font-size: 0.92rem; }
-.budget-table .item-icon { font-size: 1.1rem; margin-right: 8px; }
 .budget-bar-cell { width: 140px; }
 .budget-mini-bar { height: 6px; background: var(--gray-soft); border-radius: 3px; overflow: hidden; }
 .budget-mini-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--navy) 0%, var(--red) 100%); }
+.budget-expand-btn {
+  background: none; border: none; padding: 0; font-family: inherit; font-size: 0.88rem;
+  color: var(--navy-soft); cursor: pointer; display: flex; align-items: center; gap: 4px;
+  width: 100%; text-align: left; transition: color .2s ease;
+}
+.budget-expand-btn:hover { color: var(--navy); }
+.item-icon { font-size: 1.1rem; margin-right: 2px; }
+.row-expand-icon { margin-left: auto; font-size: 0.72rem; display: inline-block; opacity: 0.55; transition: transform .3s ease; }
+tr.data-row:hover td { background: rgba(214,228,240,0.25); }
+.detail-row { display: none; }
+.detail-row.open { display: table-row; }
+.detail-row td {
+  background: rgba(214,228,240,0.2) !important;
+  font-size: 0.84rem; color: var(--navy-soft);
+  line-height: 1.75; padding: 12px 20px 14px 48px !important;
+  border-bottom: 2px solid var(--sky); font-style: italic;
+}
 
-/* CHECKLIST */
+/* ── STEP 6: CHECKLIST checkboxes + tips ── */
 .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .checklist-card {
   background: var(--white); border-radius: var(--radius); padding: 26px;
   border: 1px solid var(--gray-soft); box-shadow: var(--shadow);
 }
-.checklist-card h3 { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-.checklist-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.checklist-items li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.84rem; color: var(--navy-soft); line-height: 1.5;
+.checklist-card h3 { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.checklist-progress { height: 4px; background: var(--gray-soft); border-radius: 2px; margin-bottom: 14px; overflow: hidden; }
+.checklist-progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), var(--red)); border-radius: 2px; transition: width .4s ease; width: 0%; }
+.checklist-items { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.checklist-items li { display: flex; flex-direction: column; }
+.check-row { display: flex; align-items: flex-start; gap: 6px; }
+.check-label {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 0.84rem; color: var(--navy-soft); line-height: 1.5; cursor: pointer;
+  padding: 3px 0; flex: 1;
 }
-.checklist-items li::before {
-  content: ''; flex-shrink: 0; width: 18px; height: 18px;
-  border: 2px solid var(--gray-soft); border-radius: 4px; margin-top: 1px;
+.check-label input[type="checkbox"] {
+  flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px;
+  accent-color: var(--navy); cursor: pointer;
+}
+.check-text { flex: 1; }
+.check-label.done .check-text { text-decoration: line-through; opacity: 0.45; }
+button.tip-trigger {
+  flex-shrink: 0; width: 17px; height: 17px; border-radius: 50%;
+  background: var(--sky); border: none; cursor: pointer;
+  font-size: 0.65rem; color: var(--navy); font-weight: 700; font-family: inherit;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 4px; transition: background .2s ease;
+}
+button.tip-trigger:hover { background: var(--navy); color: var(--white); }
+.item-tip { max-height: 0; overflow: hidden; transition: max-height .35s ease; margin-left: 25px; }
+.item-tip.open { max-height: 120px; }
+.item-tip-inner {
+  padding: 8px 10px; margin: 4px 0 2px;
+  background: var(--sky); border-radius: 8px;
+  font-size: 0.77rem; color: var(--navy); line-height: 1.6;
 }
 
-/* TIPS */
+/* ── STEP 7: TIPS accordion ── */
 .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.tip-card {
+button.tip-card {
+  width: 100%; text-align: left; font-family: inherit; font-size: inherit;
+  appearance: none; -webkit-appearance: none; cursor: pointer;
   background: var(--white); border-radius: var(--radius); padding: 26px;
-  border: 1px solid var(--gray-soft); box-shadow: var(--shadow); transition: all .25s ease;
+  border: 1px solid var(--gray-soft); box-shadow: var(--shadow);
+  transition: all .25s ease; display: block;
 }
-.tip-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+button.tip-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 .tip-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
 .tip-badge {
   display: inline-block; margin-bottom: 8px; padding: 2px 10px; border-radius: 12px;
-  background: var(--sky); color: var(--navy-soft); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  background: var(--sky); color: var(--navy-soft); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
 }
-.tip-card h3 { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 7px; }
-.tip-card p { font-size: 0.84rem; color: var(--navy-soft); line-height: 1.65; }
+button.tip-card h3 { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 7px; }
+button.tip-card p  { font-size: 0.84rem; color: var(--navy-soft); line-height: 1.65; }
+.tip-expand-hint { font-size: 0.72rem; color: var(--red); margin-top: 10px; display: block; opacity: 0.8; }
+.tip-detail-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.tip-detail-body.open { max-height: 250px; }
+.tip-detail-text {
+  padding-top: 12px; margin-top: 12px;
+  border-top: 1px solid var(--gray-soft);
+  font-size: 0.83rem; color: var(--navy); line-height: 1.78;
+}
 
 /* FOOTER */
 footer { background: var(--navy); color: var(--sky); padding: 52px 0; text-align: center; position: relative; overflow: hidden; }
@@ -432,70 +552,101 @@ footer::before {
   <div class="hero-stripe"></div>
 </section>
 
-<!-- OVERVIEW -->
+<!-- STEP 1: OVERVIEW -->
 <section id="overview" class="section-wrap bg-white">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line"></div>
       <div>
         <h2>여행 한눈에 보기</h2>
-        <p class="section-sub">5월 미국 동부 7일 일정 핵심 요약</p>
+        <p class="section-sub">카드를 클릭하면 상세 정보를 확인할 수 있습니다</p>
       </div>
     </div>
     <div class="stats-grid">
-      <div class="stat-card reveal">
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">🗓️</span>
         <div class="stat-number">7<span class="unit">일</span></div>
         <div class="stat-label">총 여행 기간</div>
         <div class="stat-desc">5월 10일 출국 → 5월 16일 귀국 (비행 포함 8일)</div>
-      </div>
-      <div class="stat-card reveal">
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">2025년 5월 10일(토) 출국 ~ 5월 16일(금) 귀국. 비행 포함 실제 8일 일정.</div>
+        </div>
+      </button>
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">🏙️</span>
         <div class="stat-number">4<span class="unit">개</span></div>
         <div class="stat-label">핵심 도시</div>
         <div class="stat-desc">뉴욕 · 워싱턴 D.C. · 필라델피아 · 보스턴</div>
-      </div>
-      <div class="stat-card reveal">
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">뉴욕(2박) · 워싱턴 D.C.(2박) · 필라델피아(1박) · 보스턴(귀국)</div>
+        </div>
+      </button>
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">🚂</span>
         <div class="stat-number">3<span class="unit">회</span></div>
         <div class="stat-label">Amtrak 이동</div>
         <div class="stat-desc">Northeast Regional 노선. 사전 예약 시 $30~80 선</div>
-      </div>
-      <div class="stat-card reveal">
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">① NY→DC 2h 45m ② DC→Philly 2h ③ Philly→Boston 5h 30m</div>
+        </div>
+      </button>
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">🌤️</span>
         <div class="stat-number">18<span class="unit">°C</span></div>
         <div class="stat-label">5월 평균 기온</div>
         <div class="stat-desc">15~24°C 쾌청한 봄 날씨. 겉옷 1벌 필수</div>
-      </div>
-      <div class="stat-card reveal">
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">뉴욕 14~22°C · D.C. 16~26°C · 필라델피아 14~24°C · 보스턴 12~20°C</div>
+        </div>
+      </button>
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">🏛️</span>
         <div class="stat-number">무료</div>
         <div class="stat-label">D.C. 스미소니언</div>
         <div class="stat-desc">워싱턴 D.C. 스미소니언 박물관 19개 전부 무료 입장</div>
-      </div>
-      <div class="stat-card reveal">
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">스미소니언 산하 19개 박물관 전부 무료. 국립 항공우주·자연사·역사 박물관 포함.</div>
+        </div>
+      </button>
+
+      <button type="button" class="stat-card reveal" aria-expanded="false">
         <span class="stat-icon">📋</span>
         <div class="stat-number">ESTA</div>
         <div class="stat-label">비자 불필요</div>
         <div class="stat-desc">한국 여권 소지자 무비자. 출발 72h 전 ESTA 신청 필수</div>
-      </div>
+        <div class="stat-hint">▼ 클릭하여 상세 확인</div>
+        <div class="stat-detail-body">
+          <div class="stat-detail-text">CBP 공식 사이트 신청. 수수료 $21. 출발 최소 72시간 전 필수.</div>
+        </div>
+      </button>
+
     </div>
   </div>
 </section>
 
-<!-- CITIES -->
+<!-- STEP 2: CITIES -->
 <section id="cities" class="section-wrap">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line"></div>
       <div>
         <h2>4개 핵심 도시</h2>
-        <p class="section-sub">각 도시에서 꼭 봐야 할 핵심 명소</p>
+        <p class="section-sub">도시 카드를 클릭하면 상세 여행 팁을 확인할 수 있습니다</p>
       </div>
     </div>
     <div class="cities-row">
 
-      <div class="city-card reveal">
+      <button type="button" class="city-card reveal" data-city="ny" aria-label="뉴욕 상세 정보 보기">
         <div class="city-banner ny">🗽</div>
         <div class="city-body">
           <div class="city-days">Day 1 — 2</div>
@@ -508,10 +659,11 @@ footer::before {
             <span class="city-tag">브루클린 브릿지</span>
             <span class="city-tag">메트로폴리탄 미술관</span>
           </div>
+          <div class="city-click-hint">▶ 클릭하여 상세 팁 보기</div>
         </div>
-      </div>
+      </button>
 
-      <div class="city-card reveal">
+      <button type="button" class="city-card reveal" data-city="dc" aria-label="워싱턴 D.C. 상세 정보 보기">
         <div class="city-banner dc">🏛</div>
         <div class="city-body">
           <div class="city-days">Day 3 — 4</div>
@@ -523,10 +675,11 @@ footer::before {
             <span class="city-tag">국회의사당</span>
             <span class="city-tag">내셔널 몰</span>
           </div>
+          <div class="city-click-hint">▶ 클릭하여 상세 팁 보기</div>
         </div>
-      </div>
+      </button>
 
-      <div class="city-card reveal">
+      <button type="button" class="city-card reveal" data-city="philly" aria-label="필라델피아 상세 정보 보기">
         <div class="city-banner philly">🔔</div>
         <div class="city-body">
           <div class="city-days">Day 5</div>
@@ -538,10 +691,11 @@ footer::before {
             <span class="city-tag">리딩 터미널 마켓</span>
             <span class="city-tag">리텐 하우스 스퀘어</span>
           </div>
+          <div class="city-click-hint">▶ 클릭하여 상세 팁 보기</div>
         </div>
-      </div>
+      </button>
 
-      <div class="city-card reveal">
+      <button type="button" class="city-card reveal" data-city="boston" aria-label="보스턴 상세 정보 보기">
         <div class="city-banner boston">🎓</div>
         <div class="city-body">
           <div class="city-days">Day 6 — 7</div>
@@ -553,21 +707,22 @@ footer::before {
             <span class="city-tag">패뉴일 홀</span>
             <span class="city-tag">프리덤 트레일</span>
           </div>
+          <div class="city-click-hint">▶ 클릭하여 상세 팁 보기</div>
         </div>
-      </div>
+      </button>
 
     </div>
   </div>
 </section>
 
-<!-- ITINERARY -->
+<!-- STEP 3: ITINERARY -->
 <section id="itinerary" class="section-wrap bg-white">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line gold"></div>
       <div>
         <h2>7일 상세 일정</h2>
-        <p class="section-sub">2025년 5월 10일(토) ~ 16일(금) — 뉴욕 → 워싱턴 D.C. → 필라델피아 → 보스턴</p>
+        <p class="section-sub">2025년 5월 10일(토) ~ 16일(금) — 각 카드를 클릭해 시간대별 세부 일정 확인</p>
       </div>
     </div>
     <div class="timeline">
@@ -579,7 +734,7 @@ footer::before {
         </div>
         <div class="timeline-card">
           <div class="card-header">
-            <h3>뉴욕 도착 — 자유의 여신상 & 타임스퀘어</h3>
+            <h3>뉴욕 도착 — 자유의 여신상 &amp; 타임스퀘어</h3>
             <span class="card-city-badge">뉴욕</span>
           </div>
           <p>인천 출발 → JFK 공항 도착 (약 14시간 비행). 짐을 풀고 페리를 타고 자유의 여신상 관람. 저녁은 타임스퀘어의 화려한 야경과 함께 뉴욕 첫날을 마무리.</p>
@@ -589,6 +744,10 @@ footer::before {
             <span class="spot-chip chip-blue">🌃 타임스퀘어 야경</span>
           </div>
           <div class="transport-tag">🏨 맨해튼 미드타운 숙박 권장</div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">09:00 JFK 도착 → 13:00 호텔 체크인(미드타운) → 15:00 배터리파크에서 자유의 여신상 페리 탑승 → 19:00 타임스퀘어 야경. 이동: JFK→Manhattan 에어트레인+지하철 약 1h.</div>
+          </div>
         </div>
       </div>
 
@@ -608,6 +767,10 @@ footer::before {
             <span class="spot-chip chip-blue">🏛️ 메트로폴리탄 미술관</span>
             <span class="spot-chip chip-blue">🌉 브루클린 브릿지</span>
             <span class="spot-chip chip-red">🎭 브로드웨이 (선택)</span>
+          </div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">09:00 센트럴파크 남쪽 입구(5th Ave &amp; 59th St) → 11:00 메트로폴리탄 미술관(입장료 $30) → 14:00 브루클린 브릿지 도보 횡단(약 40분) → 16:00 DUMBO 사진 명소 → 19:00 브로드웨이 뮤지컬 선택.</div>
           </div>
         </div>
       </div>
@@ -629,6 +792,10 @@ footer::before {
             <span class="spot-chip chip-gold">🛸 항공우주 박물관 무료</span>
           </div>
           <div class="transport-tag">🚂 Amtrak 2h 45m · 사전 예약 권장</div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">08:00 Penn Station 출발(Amtrak Northeast Regional) → 11:00 Washington Union Station 도착 → 13:00 링컨 기념관·반사 연못·워싱턴 기념탑 → 16:00 국립 항공우주 박물관(무료). 숙박: D.C. 내셔널 몰 인근.</div>
+          </div>
         </div>
       </div>
 
@@ -639,7 +806,7 @@ footer::before {
         </div>
         <div class="timeline-card">
           <div class="card-header">
-            <h3>워싱턴 D.C. 심층 — 국회의사당 & 자연사 박물관</h3>
+            <h3>워싱턴 D.C. 심층 — 국회의사당 &amp; 자연사 박물관</h3>
             <span class="card-city-badge dc">D.C.</span>
           </div>
           <p>오전 국회의사당 투어 (사전 예약 필수) → 오후 국립 자연사 박물관 (호프 다이아몬드 관람) → 국립 초상화 미술관. 저녁 조지타운 지구 산책 및 식사.</p>
@@ -648,6 +815,10 @@ footer::before {
             <span class="spot-chip chip-gold">💎 국립 자연사 박물관 무료</span>
             <span class="spot-chip chip-blue">🎨 국립 초상화 미술관</span>
             <span class="spot-chip chip-green">🍽️ 조지타운 디너</span>
+          </div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">09:00 국회의사당 투어(사전예약 필수, 무료) → 12:00 국립 자연사 박물관(호프 다이아몬드) → 14:00 국립 초상화 미술관 → 18:00 조지타운 M Street 저녁 식사.</div>
           </div>
         </div>
       </div>
@@ -670,6 +841,10 @@ footer::before {
             <span class="spot-chip chip-green">🥩 리딩 터미널 마켓</span>
           </div>
           <div class="transport-tag">🚂 Amtrak 2h · Union Station → 30th St Station</div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">08:30 Union Station 출발(Amtrak) → 10:30 필라델피아 30th St Station 도착 → 11:00 자유의 종·독립기념관(무료) → 13:30 리딩 터미널 마켓 점심 → 15:00 리텐 하우스 스퀘어 → 18:00 숙박.</div>
+          </div>
         </div>
       </div>
 
@@ -680,17 +855,21 @@ footer::before {
         </div>
         <div class="timeline-card">
           <div class="card-header">
-            <h3>필라델피아 → 보스턴 — 하버드 & MIT</h3>
+            <h3>필라델피아 → 보스턴 — 하버드 &amp; MIT</h3>
             <span class="card-city-badge boston">보스턴</span>
           </div>
-          <p>이른 아침 Amtrak 탑승 (약 5시간 30분). 오후 케임브리지로 이동해 하버드 야드 & MIT 캠퍼스 도보 투어. 저녁 패뉴일 홀 인근 퀸시 마켓에서 로브스터 롤.</p>
+          <p>이른 아침 Amtrak 탑승 (약 5시간 30분). 오후 케임브리지로 이동해 하버드 야드 &amp; MIT 캠퍼스 도보 투어. 저녁 패뉴일 홀 인근 퀸시 마켓에서 로브스터 롤.</p>
           <div class="card-spots">
             <span class="spot-chip chip-blue">🚂 Amtrak 5h 30m</span>
-            <span class="spot-chip chip-gold">🎓 하버드 & MIT 캠퍼스</span>
+            <span class="spot-chip chip-gold">🎓 하버드 &amp; MIT 캠퍼스</span>
             <span class="spot-chip chip-red">🏛️ 패뉴일 홀</span>
             <span class="spot-chip chip-green">🦞 로브스터 롤</span>
           </div>
           <div class="transport-tag">🚂 Amtrak 5h 30m · 30th St → South Station</div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">07:00 30th St Station 출발(Amtrak) → 13:00 보스턴 South Station 도착 → 14:00 T(지하철) Red Line으로 케임브리지 → 15:00 하버드 야드·MIT 캠퍼스 도보 → 18:30 퀸시 마켓 로브스터 롤.</div>
+          </div>
         </div>
       </div>
 
@@ -701,7 +880,7 @@ footer::before {
         </div>
         <div class="timeline-card">
           <div class="card-header">
-            <h3>보스턴 마무리 — 프리덤 트레일 & 귀국</h3>
+            <h3>보스턴 마무리 — 프리덤 트레일 &amp; 귀국</h3>
             <span class="card-city-badge boston">보스턴</span>
           </div>
           <p>오전 프리덤 트레일 일부 도보 (퍼뉴일 홀 → 폴 리비어 하우스 → 보스턴 코먼). 오후 보스턴 사이언스 뮤지엄 (선택). 저녁 공항으로 이동 후 귀국 비행.</p>
@@ -711,6 +890,10 @@ footer::before {
             <span class="spot-chip chip-blue">✈️ BOS → ICN 귀국</span>
           </div>
           <div class="transport-tag">✈️ 보스턴 로건 공항 출발</div>
+          <button type="button" class="accordion-btn" aria-expanded="false">시간대별 일정 <span class="arr">▼</span></button>
+          <div class="accordion-body">
+            <div class="accordion-content">09:00 보스턴 코먼(Boston Common) 산책 → 11:00 프리덤 트레일 시작점(State House) → 13:00 호텔 체크아웃 → 15:00 BOS 로건 공항 이동 → 17:00 출국.</div>
+          </div>
         </div>
       </div>
 
@@ -718,17 +901,18 @@ footer::before {
   </div>
 </section>
 
-<!-- WEATHER -->
+<!-- STEP 4: WEATHER -->
 <section id="weather" class="section-wrap">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line"></div>
       <div>
-        <h2>5월 날씨 & 복장 가이드</h2>
-        <p class="section-sub">각 도시별 5월 평균 기온 및 날씨 특징</p>
+        <h2>5월 날씨 &amp; 복장 가이드</h2>
+        <p class="section-sub">각 도시별 5월 평균 기온 및 날씨 특징 — 자세히 보기를 클릭하세요</p>
       </div>
     </div>
     <div class="weather-grid">
+
       <div class="weather-card reveal">
         <span class="weather-icon">🗽</span>
         <div class="weather-city">뉴욕</div>
@@ -739,7 +923,12 @@ footer::before {
           <span class="weather-tag">🌂 간헐적 비</span>
           <span class="weather-tag">👕 가벼운 겉옷</span>
         </div>
+        <button type="button" class="weather-expand-btn" aria-expanded="false">자세히 보기 <span class="arr">▼</span></button>
+        <div class="weather-detail-body">
+          <div class="weather-detail-text">5월 평균 강수일 11일. 오전 서늘, 오후 따뜻. 레이어링 권장. 우산 필수. 센트럴파크 라일락·튤립 만개.</div>
+        </div>
       </div>
+
       <div class="weather-card reveal">
         <span class="weather-icon">🏛</span>
         <div class="weather-city">워싱턴 D.C.</div>
@@ -750,7 +939,12 @@ footer::before {
           <span class="weather-tag">💨 선선한 바람</span>
           <span class="weather-tag">👟 워킹화 추천</span>
         </div>
+        <button type="button" class="weather-expand-btn" aria-expanded="false">자세히 보기 <span class="arr">▼</span></button>
+        <div class="weather-detail-body">
+          <div class="weather-detail-text">5월 초 벚꽃 시즌 종료 후 가장 쾌적한 날씨. 야외 관광 최적기. 자외선 차단제 챙기기.</div>
+        </div>
       </div>
+
       <div class="weather-card reveal">
         <span class="weather-icon">🔔</span>
         <div class="weather-city">필라델피아</div>
@@ -761,7 +955,12 @@ footer::before {
           <span class="weather-tag">👟 편한 신발</span>
           <span class="weather-tag">🧥 얇은 재킷</span>
         </div>
+        <button type="button" class="weather-expand-btn" aria-expanded="false">자세히 보기 <span class="arr">▼</span></button>
+        <div class="weather-detail-body">
+          <div class="weather-detail-text">뉴욕과 유사. 도보 관광 많아 쿠션 좋은 운동화 필수. 가벼운 재킷 1벌.</div>
+        </div>
       </div>
+
       <div class="weather-card reveal">
         <span class="weather-icon">🎓</span>
         <div class="weather-city">보스턴</div>
@@ -772,19 +971,24 @@ footer::before {
           <span class="weather-tag">🌧️ 간간이 비</span>
           <span class="weather-tag">🧥 바람막이 필수</span>
         </div>
+        <button type="button" class="weather-expand-btn" aria-expanded="false">자세히 보기 <span class="arr">▼</span></button>
+        <div class="weather-detail-body">
+          <div class="weather-detail-text">찰스강에서 바람 강함. 바람막이 자켓 필수. 5월 Boston Marathon 여운으로 활기찬 분위기.</div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- BUDGET -->
+<!-- STEP 5: BUDGET -->
 <section id="budget" class="section-wrap bg-white">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line gold"></div>
       <div>
         <h2>예산 계획 (1인 기준)</h2>
-        <p class="section-sub">5월 미국 동부 7일 예상 비용 — 중급 여행 기준</p>
+        <p class="section-sub">항목을 클릭하면 상세 절감 팁을 확인할 수 있습니다</p>
       </div>
     </div>
     <div class="budget-table-wrap reveal">
@@ -798,47 +1002,96 @@ footer::before {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><span class="item-icon">✈️</span>항공권</td>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">✈️</span>항공권 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>인천 ↔ JFK 직항 (성수기 전)</td>
             <td>130 – 180만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:80%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🏨</span>숙박</td>
+          <tr class="detail-row">
+            <td colspan="4">직항(대한항공/아시아나) vs 경유(일본항공·유나이티드). 3개월 전 예약 시 20~30% 절감. 인천 출발 → JFK, 귀국 BOS → 인천.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🏨</span>숙박 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>3성급 호텔 6박 (뉴욕 2 + D.C. 2 + 필라 1 + 보스턴 1)</td>
             <td>90 – 150만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:70%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🚂</span>Amtrak 열차</td>
+          <tr class="detail-row">
+            <td colspan="4">뉴욕: 미드타운 3성급 $180~250/박. D.C.: 캐피털 힐 인근 $150~200/박. 필라델피아: $120~170/박. 보스턴: 백 베이 $180~230/박.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🚂</span>Amtrak 열차 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>NY→DC, DC→Philly, Philly→Boston 3구간</td>
             <td>15 – 25만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:15%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🍽️</span>식비</td>
+          <tr class="detail-row">
+            <td colspan="4">사전 예약(2~3개월 전) 시 각 구간 $30~60. 당일 구매 시 $80~120. amtrak.com 또는 앱 예약.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🍽️</span>식비 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>1일 평균 $60~80 (팁 포함)</td>
             <td>60 – 80만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:38%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🎭</span>관광 & 입장료</td>
+          <tr class="detail-row">
+            <td colspan="4">아침: 그로서리 or 베이글 $5~8. 점심: 푸드홀 $15~25. 저녁: 레스토랑 $30~50 + 팁 20%. 1일 평균 $60~80.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🎭</span>관광 &amp; 입장료 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>브로드웨이 1회 + 유료 관광 + 페리</td>
             <td>20 – 35만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:18%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🚇</span>현지 교통</td>
+          <tr class="detail-row">
+            <td colspan="4">자유의 여신상 페리 $24. 메트로폴리탄 미술관 $30. 브로드웨이 $80~200. 스미소니언 무료. 독립기념관 무료.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🚇</span>현지 교통 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>지하철 + 우버 + 공항 이동</td>
             <td>10 – 18만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:10%"></div></div></td>
           </tr>
-          <tr>
-            <td><span class="item-icon">🛍️</span>쇼핑 & 기타</td>
+          <tr class="detail-row">
+            <td colspan="4">뉴욕 지하철 7일 무제한 $34. D.C. Metro SmarTrip 카드. 우버 공항 이동 편당 $30~60.</td>
+          </tr>
+          <tr class="data-row">
+            <td>
+              <button type="button" class="budget-expand-btn" aria-expanded="false">
+                <span class="item-icon">🛍️</span>쇼핑 &amp; 기타 <span class="row-expand-icon">▼</span>
+              </button>
+            </td>
             <td>선택 소비 (아울렛, 기념품 등)</td>
             <td>15 – 40만원</td>
             <td class="budget-bar-cell"><div class="budget-mini-bar"><div class="budget-mini-fill" style="width:20%"></div></div></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">우드버리 커먼 프리미엄 아울렛(뉴욕 근교) 버스 왕복 $46. 세일 시즌 아니어도 한국 대비 20~40% 저렴.</td>
           </tr>
           <tr class="total-row">
             <td colspan="2"><strong>💰 총 예상 비용 (1인)</strong></td>
@@ -851,115 +1104,267 @@ footer::before {
   </div>
 </section>
 
-<!-- CHECKLIST -->
+<!-- STEP 6: CHECKLIST -->
 <section id="checklist" class="section-wrap">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line"></div>
       <div>
         <h2>출발 전 준비 체크리스트</h2>
-        <p class="section-sub">여행 30일 전부터 시작해야 할 필수 준비 사항</p>
+        <p class="section-sub">여행 30일 전부터 시작해야 할 필수 준비 사항 — ⓘ 버튼으로 상세 팁 확인</p>
       </div>
     </div>
     <div class="checklist-grid">
+
       <div class="checklist-card reveal">
         <h3>📋 필수 서류</h3>
-        <ul class="checklist-items">
-          <li>여권 유효기간 6개월 이상 확인</li>
-          <li>ESTA 전자여행허가 신청 (출발 72h 전)</li>
-          <li>항공권 예약 확인서 출력</li>
-          <li>호텔 예약 확인서 출력</li>
-          <li>국제 운전면허증 (선택)</li>
-          <li>여행자 보험 가입 증명서</li>
+        <div class="checklist-progress"><div class="checklist-progress-fill" data-group="doc"></div></div>
+        <ul class="checklist-items" data-group="doc">
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-1"><span class="check-text">여권 유효기간 6개월 이상 확인</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-2"><span class="check-text">ESTA 전자여행허가 신청 (출발 72h 전)</span></label>
+              <button type="button" class="tip-trigger" data-tip="tip-esta">ⓘ</button>
+            </div>
+            <div class="item-tip" id="tip-esta"><div class="item-tip-inner">esta.cbp.dhs.gov 에서 신청. 처리 시간 최대 72h. 수수료 $21.</div></div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-3"><span class="check-text">항공권 예약 확인서 출력</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-4"><span class="check-text">호텔 예약 확인서 출력</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-5"><span class="check-text">국제 운전면허증 (선택)</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="doc-6"><span class="check-text">여행자 보험 가입 증명서</span></label>
+            </div>
+          </li>
         </ul>
       </div>
+
       <div class="checklist-card reveal">
         <h3>🚂 교통 예약</h3>
-        <ul class="checklist-items">
-          <li>인천 ↔ JFK 항공권 예약</li>
-          <li>Amtrak 뉴욕 → 워싱턴 D.C. 예약</li>
-          <li>Amtrak 워싱턴 → 필라델피아 예약</li>
-          <li>Amtrak 필라델피아 → 보스턴 예약</li>
-          <li>BOS → 인천 귀국 항공권 확인</li>
-          <li>공항-호텔 이동 수단 확인</li>
+        <div class="checklist-progress"><div class="checklist-progress-fill" data-group="trans"></div></div>
+        <ul class="checklist-items" data-group="trans">
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-1"><span class="check-text">인천 ↔ JFK 항공권 예약</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-2"><span class="check-text">Amtrak 뉴욕 → 워싱턴 D.C. 예약</span></label>
+              <button type="button" class="tip-trigger" data-tip="tip-amtrak">ⓘ</button>
+            </div>
+            <div class="item-tip" id="tip-amtrak"><div class="item-tip-inner">amtrak.com/app. Guest Rewards 가입 시 포인트 적립. Saver 요금 매진 주의.</div></div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-3"><span class="check-text">Amtrak 워싱턴 → 필라델피아 예약</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-4"><span class="check-text">Amtrak 필라델피아 → 보스턴 예약</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-5"><span class="check-text">BOS → 인천 귀국 항공권 확인</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="trans-6"><span class="check-text">공항-호텔 이동 수단 확인</span></label>
+            </div>
+          </li>
         </ul>
       </div>
+
       <div class="checklist-card reveal">
         <h3>🏛️ 관광 예약</h3>
-        <ul class="checklist-items">
-          <li>자유의 여신상 페리 사전 예약</li>
-          <li>국회의사당 투어 사전 예약 (무료)</li>
-          <li>브로드웨이 뮤지컬 티켓 (선택)</li>
-          <li>필라델피아 독립기념관 예약</li>
-          <li>보스턴 프리덤 트레일 가이드 투어 (선택)</li>
+        <div class="checklist-progress"><div class="checklist-progress-fill" data-group="tour"></div></div>
+        <ul class="checklist-items" data-group="tour">
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="tour-1"><span class="check-text">자유의 여신상 페리 사전 예약</span></label>
+              <button type="button" class="tip-trigger" data-tip="tip-ferry">ⓘ</button>
+            </div>
+            <div class="item-tip" id="tip-ferry"><div class="item-tip-inner">statuecruises.com에서 예약. Reserve America 일찍 매진. 크라운 투어는 6개월 전 예약 권장.</div></div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="tour-2"><span class="check-text">국회의사당 투어 사전 예약 (무료)</span></label>
+              <button type="button" class="tip-trigger" data-tip="tip-capitol">ⓘ</button>
+            </div>
+            <div class="item-tip" id="tip-capitol"><div class="item-tip-inner">한국 출발 전 미국 의원실(House/Senate) 홈페이지에서 무료 투어 신청.</div></div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="tour-3"><span class="check-text">브로드웨이 뮤지컬 티켓 (선택)</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="tour-4"><span class="check-text">필라델피아 독립기념관 예약</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="tour-5"><span class="check-text">보스턴 프리덤 트레일 가이드 투어 (선택)</span></label>
+            </div>
+          </li>
         </ul>
       </div>
+
       <div class="checklist-card reveal">
-        <h3>💳 금융 & 통신</h3>
-        <ul class="checklist-items">
-          <li>해외 수수료 없는 신용카드 준비</li>
-          <li>소액 달러 현금 환전 ($100~200)</li>
-          <li>미국 eSIM 또는 로밍 설정</li>
-          <li>구글 맵 오프라인 지도 다운로드</li>
-          <li>Venmo / 앱 설치 (현지 결제 앱)</li>
+        <h3>💳 금융 &amp; 통신</h3>
+        <div class="checklist-progress"><div class="checklist-progress-fill" data-group="fin"></div></div>
+        <ul class="checklist-items" data-group="fin">
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="fin-1"><span class="check-text">해외 수수료 없는 신용카드 준비</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="fin-2"><span class="check-text">소액 달러 현금 환전 ($100~200)</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="fin-3"><span class="check-text">미국 eSIM 또는 로밍 설정</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="fin-4"><span class="check-text">구글 맵 오프라인 지도 다운로드</span></label>
+            </div>
+          </li>
+          <li>
+            <div class="check-row">
+              <label class="check-label"><input type="checkbox" class="check-input" data-key="fin-5"><span class="check-text">Venmo / 앱 설치 (현지 결제 앱)</span></label>
+            </div>
+          </li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- TIPS -->
+<!-- STEP 7: TIPS -->
 <section id="tips" class="section-wrap bg-white">
   <div class="container">
     <div class="section-header reveal">
       <div class="accent-line gold"></div>
       <div>
         <h2>알아두면 좋은 여행 팁</h2>
-        <p class="section-sub">동부 여행자를 위한 실전 꿀팁</p>
+        <p class="section-sub">카드를 클릭하면 더 자세한 정보를 확인할 수 있습니다</p>
       </div>
     </div>
     <div class="tips-grid">
-      <div class="tip-card reveal">
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">🚂</span>
         <span class="tip-badge">교통</span>
         <h3>Amtrak 예약은 2~3개월 전에</h3>
         <p>Amtrak은 일찍 예약할수록 저렴합니다. Acela (고속) 대신 Northeast Regional를 선택하면 가격은 절반, 시간은 30~40분 더 걸립니다. Amtrak 앱에서 예약 가능.</p>
-      </div>
-      <div class="tip-card reveal">
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">Acela (고속, $150~300) vs Northeast Regional ($30~80). 시간 차이 30~40분. 비용 차이 3~5배. 일반 여행자는 Regional 충분.</div>
+        </div>
+      </button>
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">🏛️</span>
         <span class="tip-badge">관광</span>
         <h3>D.C. 박물관은 전부 무료</h3>
         <p>스미소니언 산하 19개 박물관은 모두 무료 입장입니다. 국립 항공우주 박물관, 국립 자연사 박물관, 아메리칸 히스토리 박물관이 특히 인기. 주말엔 줄이 길어 오전 오픈 시간에 방문 추천.</p>
-      </div>
-      <div class="tip-card reveal">
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">오픈 시간: 10:00~17:30 (박물관마다 다름). 주말 줄 피하려면 10:00 오픈 직전 도착. 항공우주 박물관은 2시간 이상 소요.</div>
+        </div>
+      </button>
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">💵</span>
         <span class="tip-badge">문화</span>
         <h3>팁은 15~20% 기본</h3>
         <p>식당에서 팁은 청구 금액의 15~20%가 관례입니다. iPad로 결제 시 자동으로 팁 선택화면이 나옵니다. 택시 우버도 10~15% 팁을 남기는 것이 예의입니다.</p>
-      </div>
-      <div class="tip-card reveal">
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">식당 결제 시 iPad에서 18% / 20% / 22% 선택. 현금 팁은 테이블에 놓고 나옴. 택시·우버 $1~3 또는 10~15%.</div>
+        </div>
+      </button>
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">🦞</span>
         <span class="tip-badge">음식</span>
         <h3>보스턴에선 로브스터 롤 필수</h3>
         <p>보스턴 퀸시 마켓, 제임스 후크, 유니온 오이스터 하우스에서 신선한 로브스터를 합리적 가격에 즐길 수 있습니다. 5월은 랍스터 제철 시즌입니다.</p>
-      </div>
-      <div class="tip-card reveal">
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">James Hook &amp; Co. (cold, $28~32) vs. Luke's Lobster (warm, $25). 퀸시 마켓은 관광지 가격대. Eventide Oyster Co. 미슐랭 추천.</div>
+        </div>
+      </button>
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">📱</span>
         <span class="tip-badge">통신</span>
         <h3>eSIM으로 데이터 절약</h3>
-        <p>국내에서 미국 eSIM을 미리 구입하면 현지보다 30~50% 저렴합니다. T-Mobile/AT&T 망 기반의 7일 무제한 데이터 요금제를 비교해보세요. 네이버/카카오에서 구매 가능.</p>
-      </div>
-      <div class="tip-card reveal">
+        <p>국내에서 미국 eSIM을 미리 구입하면 현지보다 30~50% 저렴합니다. T-Mobile/AT&amp;T 망 기반의 7일 무제한 데이터 요금제를 비교해보세요.</p>
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">클룩/와이파이도시락/트래블버즈 비교. 7일 무제한 3~5만원대. T-Mobile 망 기반이 동부 커버리지 우수.</div>
+        </div>
+      </button>
+
+      <button type="button" class="tip-card reveal">
         <span class="tip-icon">🌸</span>
         <span class="tip-badge">5월 특성</span>
         <h3>Memorial Day 주의 (5월 마지막 월요일)</h3>
-        <p>2025년 Memorial Day는 5월 26일. 해당 주는 미국인 여행객이 급증해 호텔·항공·기차 요금이 상승합니다. 5월 10~16일 일정은 Memorial Day 이전이라 상대적으로 여유롭습니다.</p>
-      </div>
+        <p>2025년 Memorial Day는 5월 26일. 해당 주는 미국인 여행객이 급증해 호텔·항공·기차 요금이 상승합니다. 5월 10~16일 일정은 비교적 여유롭습니다.</p>
+        <span class="tip-expand-hint">▼ 자세히 보기</span>
+        <div class="tip-detail-body">
+          <div class="tip-detail-text">5/26(월) 전후 주말 숙박·교통 20~40% 상승. 5/10~16 일정은 Memorial Day 1.5주 전이라 비교적 여유.</div>
+        </div>
+      </button>
+
     </div>
   </div>
 </section>
 
 </main>
+
+<!-- STEP 2: CITY MODAL -->
+<dialog id="cityModal" aria-modal="true" aria-labelledby="modalCityName">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div>
+        <span class="modal-badge" id="modalCityDays"></span>
+        <h3 class="modal-city-name" id="modalCityName"></h3>
+      </div>
+      <button type="button" class="modal-close" aria-label="닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-city-body"></p>
+    </div>
+  </div>
+</dialog>
 
 <footer>
   <div class="container">
@@ -989,22 +1394,19 @@ footer::before {
 (function () {
   'use strict';
 
-  // Smooth scroll
+  /* ── 스크롤 스무스 ── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
 
-  // Scroll reveal
+  /* ── 스크롤 리빌 ── */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
@@ -1012,22 +1414,166 @@ footer::before {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
   }
 
-  // Active nav highlight
-  var sections = document.querySelectorAll('section[id]');
-  var navAs    = document.querySelectorAll('.nav-links a');
+  /* ── 네비 활성 하이라이트 ── */
+  var navAs = document.querySelectorAll('.nav-links a');
   if ('IntersectionObserver' in window) {
     var navIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           var id = entry.target.id;
-          navAs.forEach(function (a) {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-          });
+          navAs.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
         }
       });
     }, { rootMargin: '-35% 0px -60% 0px' });
-    sections.forEach(function (s) { navIO.observe(s); });
+    document.querySelectorAll('section[id]').forEach(function (s) { navIO.observe(s); });
   }
+
+  /* ── STEP 1: 개요 카드 클릭 확장 ── */
+  document.querySelectorAll('button.stat-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('button.stat-card').forEach(function (c) { c.setAttribute('aria-expanded', 'false'); });
+      this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('button.stat-card')) {
+      document.querySelectorAll('button.stat-card').forEach(function (c) { c.setAttribute('aria-expanded', 'false'); });
+    }
+  });
+
+  /* ── STEP 2: 도시 모달 ── */
+  var cityModal = document.getElementById('cityModal');
+  var cityData = {
+    ny: {
+      days: 'Day 1 – 2',
+      name: '🗽 뉴욕 New York',
+      body: 'Day 1~2. <strong>추천 숙박:</strong> 미드타운 맨해튼.<br><br>자유의 여신상 페리($24) 사전 예약 필수. 지하철 1회 $2.9, 메트로카드 1일권 $13.<br><br>📍 센트럴파크 → 메트로폴리탄 미술관($30) → 브루클린 브릿지 도보 횡단 → DUMBO<br>🎭 브로드웨이 뮤지컬 저녁 (선택, $80~200)'
+    },
+    dc: {
+      days: 'Day 3 – 4',
+      name: '🏛 워싱턴 D.C.',
+      body: 'Day 3~4. <strong>국회의사당 투어</strong> 사전 예약(house.gov 무료).<br><br>모든 스미소니언 박물관 무료. 내셔널 몰은 도보 이동 가능.<br><br>📍 링컨 기념관 → 국립 항공우주 박물관 → 국회의사당 → 국립 자연사 박물관<br>🍽️ 저녁 조지타운 M Street 식사'
+    },
+    philly: {
+      days: 'Day 5',
+      name: '🔔 필라델피아 Philadelphia',
+      body: 'Day 5. <strong>독립기념관·자유의 종 무료.</strong><br><br>리딩 터미널 마켓(Reading Terminal Market) 현지 맛집 밀집. 체스트넛 스트리트 쇼핑.<br><br>📍 자유의 종 → 독립기념관 → 리딩 터미널 마켓 → 리텐 하우스 스퀘어<br>🚂 Amtrak 2h, DC Union Station → 30th St Station'
+    },
+    boston: {
+      days: 'Day 6 – 7',
+      name: '🎓 보스턴 Boston',
+      body: 'Day 6~7. <strong>케임브리지 하버드·MIT</strong> 도보 30분 거리.<br><br>프리덤 트레일 2.5마일 도보 코스. BOS 로건 공항 출발.<br><br>📍 하버드 야드 → MIT 캠퍼스 → 패뉴일 홀 → 퀸시 마켓 로브스터 롤<br>🚶 프리덤 트레일 (State House → 폴 리비어 하우스 → 보스턴 코먼)'
+    }
+  };
+  if (cityModal) {
+    document.querySelectorAll('button.city-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var data = cityData[this.dataset.city];
+        if (!data) return;
+        cityModal.querySelector('#modalCityDays').textContent = data.days;
+        cityModal.querySelector('#modalCityName').textContent = data.name;
+        cityModal.querySelector('.modal-city-body').innerHTML = data.body;
+        cityModal.showModal();
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    cityModal.querySelector('.modal-close').addEventListener('click', function () {
+      cityModal.close(); document.body.style.overflow = '';
+    });
+    cityModal.addEventListener('click', function (e) {
+      if (e.target === cityModal) { cityModal.close(); document.body.style.overflow = ''; }
+    });
+    cityModal.addEventListener('cancel', function () { document.body.style.overflow = ''; });
+  }
+
+  /* ── STEP 3: 일정 아코디언 ── */
+  document.querySelectorAll('.accordion-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var body = this.nextElementSibling;
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      body.classList.toggle('open', !isOpen);
+    });
+  });
+
+  /* ── STEP 4: 날씨 카드 확장 ── */
+  document.querySelectorAll('.weather-expand-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var body = this.nextElementSibling;
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      body.classList.toggle('open', !isOpen);
+    });
+  });
+
+  /* ── STEP 5: 예산 행 확장 ── */
+  document.querySelectorAll('.budget-expand-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var row = this.closest('tr');
+      var detailRow = row.nextElementSibling;
+      if (!detailRow || !detailRow.classList.contains('detail-row')) return;
+      var isOpen = detailRow.classList.contains('open');
+      detailRow.classList.toggle('open', !isOpen);
+      this.setAttribute('aria-expanded', String(!isOpen));
+      var icon = this.querySelector('.row-expand-icon');
+      if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+  });
+
+  /* ── STEP 6: 체크리스트 localStorage ── */
+  var CL_KEY = 'travel-cl-v1';
+  var clData = {};
+  try { clData = JSON.parse(localStorage.getItem(CL_KEY) || '{}'); } catch (_) {}
+
+  function updateProgress(group) {
+    var items = document.querySelectorAll('[data-group="' + group + '"] .check-input');
+    var fill  = document.querySelector('.checklist-progress-fill[data-group="' + group + '"]');
+    if (!fill || !items.length) return;
+    var done = 0;
+    items.forEach(function (cb) { if (cb.checked) done++; });
+    fill.style.width = Math.round(done / items.length * 100) + '%';
+  }
+
+  document.querySelectorAll('.check-input').forEach(function (cb) {
+    var key = cb.dataset.key;
+    if (clData[key]) { cb.checked = true; cb.closest('.check-label').classList.add('done'); }
+    cb.addEventListener('change', function () {
+      clData[this.dataset.key] = this.checked;
+      try { localStorage.setItem(CL_KEY, JSON.stringify(clData)); } catch (_) {}
+      this.closest('.check-label').classList.toggle('done', this.checked);
+      var group = this.closest('[data-group]');
+      if (group) updateProgress(group.dataset.group);
+    });
+  });
+  ['doc', 'trans', 'tour', 'fin'].forEach(updateProgress);
+
+  document.querySelectorAll('button.tip-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var tip = document.getElementById(this.dataset.tip);
+      if (tip) tip.classList.toggle('open');
+    });
+  });
+
+  /* ── STEP 7: 팁 카드 아코디언 ── */
+  document.querySelectorAll('button.tip-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var body = this.querySelector('.tip-detail-body');
+      var hint = this.querySelector('.tip-expand-hint');
+      if (!body) return;
+      var isOpen = body.classList.contains('open');
+      document.querySelectorAll('.tip-detail-body.open').forEach(function (b) {
+        b.classList.remove('open');
+        var h = b.closest('button.tip-card').querySelector('.tip-expand-hint');
+        if (h) h.textContent = '▼ 자세히 보기';
+      });
+      if (!isOpen) {
+        body.classList.add('open');
+        if (hint) hint.textContent = '▲ 닫기';
+      }
+    });
+  });
 
 }());
 </script>
