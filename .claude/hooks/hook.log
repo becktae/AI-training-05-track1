@@ -31,3 +31,6 @@ node .claude/hooks/validate-single-html." — git push 금지 — Stop hook이 �
 [2026-05-13 07:09:00][TEST] PASS TC-15 | console errors: 0
 [2026-05-13 07:09:08][HOOK] Stop hook started
 [2026-05-13 07:09:08][HOOK] validate PASS
+[2026-05-13 07:09:08][HOOK] commit success: 046ad24
+[2026-05-13 07:09:15][HOOK] Stop hook started
+[2026-05-13 07:09:15][HOOK] validate PASS
