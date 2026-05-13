@@ -1,2 +1,13 @@
 [2026-05-13 15:11:17][HOOK] SubagentStop test-runner validation started
 [2026-05-13 15:11:17][HOOK] test passed - all 7 checks OK
+[2026-05-13 15:11:24][HOOK] commit success: c50e1cd
+[2026-05-13 06:26:13][HOOK] Stop hook started
+[2026-05-13 06:26:13][HOOK] validate PASS
+[2026-05-13 06:26:20][GUARD] BLOCKED: "\
+echo "── validate standalone ──" && \
+node .claude/hooks/validate-single-html." — git push 금지 — Stop hook이 자동 커밋을 처리합니다.
+[2026-05-13 06:26:48][GUARD] BLOCKED: "echo "=== PreToolUse: git push 차단 ===" && echo '{"tool_name":"Bash","tool_input"" — git push 금지 — Stop hook이 자동 커밋을 처리합니다.
+[2026-05-13 06:32:04][GUARD] BLOCKED: "echo '{"tool_name":"Bash","tool_input":{"command":"rm -rf /tmp/test"}}' | node ." — rm 금지 — 파일 삭제는 수동으로 확인 후 진행하세요.
+[2026-05-13 06:32:12][POST] validate PASS — /Users/becktae/project/AI-training-05-track1/index.html
+[2026-05-13 06:32:30][HOOK] Stop hook started
+[2026-05-13 06:32:30][HOOK] validate PASS
