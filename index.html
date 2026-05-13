@@ -1487,11 +1487,17 @@ footer::before {
     cityModal.addEventListener('cancel', function () { document.body.style.overflow = ''; });
   }
 
-  /* ── STEP 3: 일정 아코디언 ── */
+  /* ── STEP 3: 일정 아코디언 (단일 오픈) ── */
   document.querySelectorAll('.accordion-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var body = this.nextElementSibling;
       var isOpen = this.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) {
+        document.querySelectorAll('#itinerary .accordion-btn[aria-expanded="true"]').forEach(function (other) {
+          other.setAttribute('aria-expanded', 'false');
+          other.nextElementSibling.classList.remove('open');
+        });
+      }
       this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
       body.classList.toggle('open', !isOpen);
     });
