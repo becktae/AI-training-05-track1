@@ -34,3 +34,19 @@ node .claude/hooks/validate-single-html." — git push 금지 — Stop hook이 �
 [2026-05-13 07:09:08][HOOK] commit success: 046ad24
 [2026-05-13 07:09:15][HOOK] Stop hook started
 [2026-05-13 07:09:15][HOOK] validate PASS
+[2026-05-13 07:09:15][HOOK] commit success: 5ea9923
+[2026-05-13 07:12:00][TEST] PASS TC-03 | console errors: 0
+[2026-05-13 07:12:01][TEST] FAIL TC-04-NY: "$24" boundingBox null
+[2026-05-13 07:12:01][TEST] FAIL TC-04-NY | console errors: 0
+[2026-05-13 07:12:02][TEST] PASS TC-04-DC | console errors: 0
+[2026-05-13 07:12:03][TEST] FAIL TC-04-C: "미드타운" is still visible
+[2026-05-13 07:12:03][TEST] FAIL TC-04-C | console errors: 0
+[2026-05-13 07:12:04][TEST] FAIL TC-15-STEP2: "뉴욕" boundingBox null
+[2026-05-13 07:12:04][TEST] FAIL TC-15-STEP2 | console errors: 0
+[2026-05-13 07:16:56][TEST] PASS TC-03 | console errors: 0
+[2026-05-13 07:16:57][TEST] PASS TC-04-NY | console errors: 0
+[2026-05-13 07:16:58][TEST] PASS TC-04-DC | console errors: 0
+[2026-05-13 07:16:59][TEST] PASS TC-04-C | console errors: 0
+[2026-05-13 07:17:01][TEST] PASS TC-15-STEP2 | console errors: 0
+[2026-05-13 07:17:06][HOOK] Stop hook started
+[2026-05-13 07:17:06][HOOK] validate PASS
