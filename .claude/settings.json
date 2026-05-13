@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "language": "korean",
+  "model": "opusplan",
+  "plansDirectory": ".claude/plans",
+  "showClearContextOnPlanAccept": true,
+  "permissions": {
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Bash(*)"
+    ],
+    "deny": [
+      "Write(~/.claude/**)",
+      "Edit(~/.claude/**)",
+      "Bash(*~/.claude*)"
+    ]
+  },
+  "hooks": {
+    "SubagentStop": [
+      {
+        "matcher": "html-builder",
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "먼저 .claude/hooks/hook.log 파일에 '[HOOK] SubagentStop test-runner validation started' 줄을 추가하라. 그런 다음 .claude/agents/test-runner.md를 읽고 그 검증 기준에 따라 index.html을 검증하라. 성공이면 {\"ok\": true}를, 실패이면 {\"ok\": false, \"reason\": \"실패 이유\"}를 반환하라.",
+            "statusMessage": "html-builder 결과 검증 중..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File .claude/hooks/stop-test-and-commit.ps1",
+            "statusMessage": "자동 테스트 및 커밋 실행 중..."
+          }
+        ]
+      }
+    ]
+  }
+}
