@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8월 도쿄 4박5일 여행 계획 2025</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a1a2e;--navy2:#16213e;
+  --red:#e94560;--gold:#f5a623;--teal:#4ecdc4;--purple:#7c3aed;--green:#059669;
+  --light:#f8f9fa;--cream:#fef9f0;--gray:#6b7280;--border:#e5e7eb;--text:#1f2937;
+  --sh:0 2px 8px rgba(0,0,0,.08);--sh2:0 8px 24px rgba(0,0,0,.15);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--light);line-height:1.6}
+
+/* NAV */
+nav{background:var(--navy);padding:0 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.nav-links{display:flex;gap:4px;list-style:none;overflow-x:auto}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:20px;white-space:nowrap;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--red);color:#fff}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0f3460 55%,var(--navy2) 100%);padding:72px 20px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'⛩️';font-size:180px;position:absolute;top:-20px;right:-20px;opacity:.06;pointer-events:none}
+.hero-badge{display:inline-block;background:var(--red);color:#fff;padding:4px 14px;border-radius:20px;font-size:.78rem;font-weight:600;letter-spacing:.05em;margin-bottom:14px}
+.hero h1{color:#fff;font-size:clamp(1.7rem,5vw,2.8rem);font-weight:800;line-height:1.2;margin-bottom:10px}
+.hero-sub{color:rgba(255,255,255,.65);font-size:.95rem;margin-bottom:28px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.hero-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);padding:5px 14px;border-radius:20px;font-size:.82rem}
+
+/* LAYOUT */
+.container{max-width:860px;margin:0 auto;padding:0 20px}
+.section-wrap{padding:60px 0}
+.bg-white{background:#fff}
+.section-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:36px}
+.accent{width:4px;height:44px;border-radius:2px;flex-shrink:0;margin-top:4px}
+.accent.red{background:var(--red)}
+.accent.gold{background:var(--gold)}
+.accent.teal{background:var(--teal)}
+.section-sub{color:var(--gray);font-size:.87rem;margin-top:3px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
+.stat-box{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;box-shadow:var(--sh)}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--red);line-height:1}
+.stat-unit{font-size:.8rem;color:var(--gray);margin-top:2px}
+.stat-lbl{font-size:.75rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column}
+.tl-item{display:grid;grid-template-columns:72px 1fr;gap:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;padding-top:6px}
+.tl-dot{width:38px;height:38px;border-radius:50%;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;z-index:1}
+.tl-dot.c1{background:var(--red)}.tl-dot.c2{background:var(--purple)}.tl-dot.c3{background:var(--green)}
+.tl-dot.c4{background:var(--gold);color:var(--navy)}.tl-dot.c5{background:var(--teal);color:var(--navy)}
+.tl-date{font-size:.68rem;color:var(--gray);margin-top:3px;text-align:center;white-space:nowrap}
+.tl-line{width:2px;background:var(--border);flex:1;margin:4px 0;min-height:16px}
+.tl-item:last-child .tl-line{display:none}
+.tl-right{padding:0 0 36px 18px}
+.tl-day-title{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.tl-day-sub{font-size:.82rem;color:var(--gray);margin-bottom:14px}
+
+/* SPOT BUTTONS */
+.spots-grid{display:flex;flex-direction:column;gap:7px}
+.spot-btn{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 14px;cursor:pointer;text-align:left;width:100%;transition:all .2s;appearance:none;-webkit-appearance:none}
+.spot-btn:hover{border-color:var(--red);box-shadow:var(--sh2);transform:translateY(-1px)}
+.spot-icon{font-size:1.4rem;flex-shrink:0}
+.spot-info{flex:1;min-width:0}
+.spot-name{font-size:.9rem;font-weight:600;color:var(--text)}
+.spot-desc{font-size:.77rem;color:var(--gray);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spot-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.chip{font-size:.68rem;padding:2px 7px;border-radius:9px;font-weight:500}
+.chip-free{background:#dcfce7;color:#16a34a}.chip-paid{background:#fef3c7;color:#d97706}
+.chip-food{background:#ffe4e6;color:#e11d48}.chip-night{background:#ede9fe;color:#7c3aed}
+.chip-hot{background:#fee2e2;color:#dc2626}
+.spot-arr{color:var(--gray);font-size:.95rem;flex-shrink:0;transition:transform .2s}
+.spot-btn:hover .spot-arr{transform:translateX(3px);color:var(--red)}
+
+/* DRAWER OVERLAY */
+.dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.dr-overlay.open{opacity:1;visibility:visible}
+
+/* DRAWER */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:#fff;z-index:300;transform:translateX(100%);transition:transform .35s cubic-bezier(.32,.72,0,1);overflow-y:auto;display:flex;flex-direction:column;box-shadow:-4px 0 32px rgba(0,0,0,.15)}
+.drawer.open{transform:translateX(0)}
+.dr-head{padding:18px 18px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:11px;background:var(--navy);color:#fff;flex-shrink:0}
+.dr-head-icon{font-size:1.9rem;line-height:1}
+.dr-head-info{flex:1;min-width:0}
+.dr-area{font-size:.7rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
+.dr-title{font-size:1.1rem;font-weight:700;margin-top:2px;line-height:1.3}
+.dr-close{background:none;border:none;color:rgba(255,255,255,.65);font-size:1.15rem;cursor:pointer;padding:4px;line-height:1;border-radius:4px;flex-shrink:0}
+.dr-close:hover{color:#fff;background:rgba(255,255,255,.12)}
+.dr-body{padding:18px;flex:1}
+.dr-meta{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.dr-meta-item{background:var(--light);border-radius:8px;padding:9px 11px}
+.dr-meta-lbl{font-size:.67rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.dr-meta-val{font-size:.87rem;color:var(--text);font-weight:500;margin-top:2px}
+.dr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.dr-tag{font-size:.75rem;padding:3px 9px;border-radius:11px;background:#f3f4f6;color:var(--text)}
+.dr-sec{margin-bottom:16px}
+.dr-sec-title{font-size:.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.dr-sec-title::before{content:'';display:inline-block;width:3px;height:13px;background:var(--red);border-radius:2px}
+.dr-desc{font-size:.87rem;color:var(--text);line-height:1.7}
+.dr-tip{background:#fffbeb;border-left:3px solid var(--gold);padding:9px 13px;border-radius:0 8px 8px 0;font-size:.84rem;color:#78350f;line-height:1.6}
+
+/* BUDGET */
+.budget-wrap{overflow-x:auto}
+.budget-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.budget-table th{background:var(--navy);color:#fff;padding:9px 13px;text-align:left;font-size:.78rem}
+.budget-table td{padding:9px 13px;border-bottom:1px solid var(--border)}
+.budget-table tr:last-child td{border-bottom:none;font-weight:700;background:var(--cream)}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tip-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--sh)}
+.tip-card-icon{font-size:1.4rem;margin-bottom:9px}
+.tip-card h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+.tip-card p{font-size:.83rem;color:var(--gray);line-height:1.65}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:28px 20px;font-size:.82rem}
+footer strong{color:#fff}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .drawer{width:100vw}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .dr-meta{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .tl-item{grid-template-columns:58px 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🗼 도쿄 4박5일</div>
+  <ul class="nav-links">
+    <li><a href="#overview">개요</a></li>
+    <li><a href="#itinerary">일정</a></li>
+    <li><a href="#budget">예산</a></li>
+    <li><a href="#tips">꿀팁</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">2025년 8월 여행</div>
+    <h1>🗼 도쿄 4박5일<br>완벽 여행 계획</h1>
+    <p class="hero-sub">2025년 8월 1일(금) – 5일(화) · 도쿄 전 지역</p>
+    <div class="hero-tags">
+      <span class="hero-tag">✈ 나리타 / 하네다</span>
+      <span class="hero-tag">🌡 30–35°C 폭염 시즌</span>
+      <span class="hero-tag">🎆 마츠리 &amp; 불꽃축제</span>
+      <span class="hero-tag">🍜 라멘 · 스시 · 야키토리</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section id="overview" class="section-wrap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="accent red"></div>
+      <div><h2>여행 개요</h2><p class="section-sub">핵심 정보 한눈에 보기</p></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box reveal"><div class="stat-num">5</div><div class="stat-unit">일</div><div class="stat-lbl">여행 기간</div></div>
+      <div class="stat-box reveal"><div class="stat-num">4</div><div class="stat-unit">박</div><div class="stat-lbl">숙박</div></div>
+      <div class="stat-box reveal"><div class="stat-num">33</div><div class="stat-unit">°C</div><div class="stat-lbl">8월 평균 최고기온</div></div>
+      <div class="stat-box reveal"><div class="stat-num">비자</div><div class="stat-unit">불필요</div><div class="stat-lbl">90일 무비자</div></div>
+      <div class="stat-box reveal"><div class="stat-num">230</div><div class="stat-unit">만원~</div><div class="stat-lbl">1인 예상 총비용</div></div>
+      <div class="stat-box reveal"><div class="stat-num">IC</div><div class="stat-unit">카드</div><div class="stat-lbl">교통 필수품</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="itinerary" class="section-wrap bg-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="accent red"></div>
+      <div><h2>5일 상세 일정</h2><p class="section-sub">명소 카드를 클릭하면 우측 드로어에서 상세 정보를 확인하세요</p></div>
+    </div>
+    <div class="timeline">
+
+      <!-- D1 -->
+      <div class="tl-item reveal">
+        <div class="tl-left">
+          <div class="tl-dot c1">D1</div>
+          <div class="tl-date">8/1 금</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-day-title">도착 &amp; 신주쿠 탐방</div>
+          <div class="tl-day-sub">인천 → 나리타/하네다 → 신주쿠 체크인 → 첫날 저녁</div>
+          <div class="spots-grid">
+            <button type="button" class="spot-btn" data-spot="narita">
+              <span class="spot-icon">✈️</span>
+              <div class="spot-info">
+                <div class="spot-name">나리타 / 하네다 공항 입국</div>
+                <div class="spot-desc">N'EX 또는 리무진버스로 신주쿠 이동</div>
+                <div class="spot-chips"><span class="chip chip-paid">교통</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="shinjuku-hotel">
+              <span class="spot-icon">🏨</span>
+              <div class="spot-info">
+                <div class="spot-name">신주쿠 호텔 체크인</div>
+                <div class="spot-desc">짐 정리 · IC카드 구매 · 편의점 탐색</div>
+                <div class="spot-chips"><span class="chip chip-paid">숙박</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="omoide">
+              <span class="spot-icon">🍢</span>
+              <div class="spot-info">
+                <div class="spot-name">오모이데 요코초 (思い出横丁)</div>
+                <div class="spot-desc">신주쿠 서쪽 야키토리 골목 · 저녁 첫 식사</div>
+                <div class="spot-chips"><span class="chip chip-food">음식</span><span class="chip chip-night">야경</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="tocho">
+              <span class="spot-icon">🏙️</span>
+              <div class="spot-info">
+                <div class="spot-name">도쿄 도청 전망대 (都庁展望台)</div>
+                <div class="spot-desc">243m · 무료 야경 · 22:30까지</div>
+                <div class="spot-chips"><span class="chip chip-free">무료</span><span class="chip chip-night">야경</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2 -->
+      <div class="tl-item reveal">
+        <div class="tl-left">
+          <div class="tl-dot c2">D2</div>
+          <div class="tl-date">8/2 토</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-day-title">아사쿠사 &amp; 우에노 &amp; 아키하바라</div>
+          <div class="tl-day-sub">전통 도쿄의 심장 + 서브컬처 성지</div>
+          <div class="spots-grid">
+            <button type="button" class="spot-btn" data-spot="sensoji">
+              <span class="spot-icon">⛩️</span>
+              <div class="spot-info">
+                <div class="spot-name">센소지 (浅草寺)</div>
+                <div class="spot-desc">도쿄 최고(最古) 사원 · 아침 8시 이전 방문 추천</div>
+                <div class="spot-chips"><span class="chip chip-free">무료</span><span class="chip chip-hot">성수기 혼잡</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="nakamise">
+              <span class="spot-icon">🛍️</span>
+              <div class="spot-info">
+                <div class="spot-name">나카미세 거리 (仲見世通り)</div>
+                <div class="spot-desc">전통 기념품 · 닝교야키 · 부채</div>
+                <div class="spot-chips"><span class="chip chip-food">길거리 음식</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="ueno">
+              <span class="spot-icon">🌳</span>
+              <div class="spot-info">
+                <div class="spot-name">우에노 공원 &amp; 국립박물관</div>
+                <div class="spot-desc">일본 최대 박물관 · 연꽃 연못 · 여름 명소</div>
+                <div class="spot-chips"><span class="chip chip-paid">박물관 ¥1,000</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="akihabara">
+              <span class="spot-icon">🎮</span>
+              <div class="spot-info">
+                <div class="spot-name">아키하바라 (秋葉原)</div>
+                <div class="spot-desc">가전 면세 · 애니 피규어 · 메이드 카페</div>
+                <div class="spot-chips"><span class="chip chip-paid">쇼핑</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- D3 -->
+      <div class="tl-item reveal">
+        <div class="tl-left">
+          <div class="tl-dot c3">D3</div>
+          <div class="tl-date">8/3 일</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-day-title">하라주쿠 &amp; 시부야 &amp; 오모테산도</div>
+          <div class="tl-day-sub">트렌디한 서쪽 도쿄 · 스크램블 교차로 · 루프탑 전망</div>
+          <div class="spots-grid">
+            <button type="button" class="spot-btn" data-spot="meiji">
+              <span class="spot-icon">🌿</span>
+              <div class="spot-info">
+                <div class="spot-name">메이지 신궁 (明治神宮)</div>
+                <div class="spot-desc">울창한 숲 · 도심 속 힐링 · 하라주쿠역 인접</div>
+                <div class="spot-chips"><span class="chip chip-free">무료</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="takeshita">
+              <span class="spot-icon">🌈</span>
+              <div class="spot-info">
+                <div class="spot-name">타케시타 거리 (竹下通り)</div>
+                <div class="spot-desc">크레이프 · 팝 패션 · 400m 쇼핑 골목</div>
+                <div class="spot-chips"><span class="chip chip-food">크레이프</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="scramble">
+              <span class="spot-icon">🚶</span>
+              <div class="spot-info">
+                <div class="spot-name">시부야 스크램블 교차로</div>
+                <div class="spot-desc">세계 최대 교차로 · 하치코 동상 · 포토 명소</div>
+                <div class="spot-chips"><span class="chip chip-free">무료</span><span class="chip chip-hot">포토스팟</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="shibuya-sky">
+              <span class="spot-icon">🌆</span>
+              <div class="spot-info">
+                <div class="spot-name">시부야 스카이 (SHIBUYA SKY)</div>
+                <div class="spot-desc">229m 야외 전망대 · 황혼 타임 추천 · 사전예약 필수</div>
+                <div class="spot-chips"><span class="chip chip-paid">¥2,000~</span><span class="chip chip-night">야경</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- D4 -->
+      <div class="tl-item reveal">
+        <div class="tl-left">
+          <div class="tl-dot c4">D4</div>
+          <div class="tl-date">8/4 월</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-day-title">스카이트리 &amp; 긴자 &amp; 팀 라보</div>
+          <div class="tl-day-sub">634m 최고층 전망 · 최고급 쇼핑 · 몰입형 디지털 아트</div>
+          <div class="spots-grid">
+            <button type="button" class="spot-btn" data-spot="skytree">
+              <span class="spot-icon">🗼</span>
+              <div class="spot-info">
+                <div class="spot-name">도쿄 스카이트리 (東京スカイツリー)</div>
+                <div class="spot-desc">634m · 제1전망대 350m · 제2전망대 450m</div>
+                <div class="spot-chips"><span class="chip chip-paid">¥2,100~3,100</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="tsukiji">
+              <span class="spot-icon">🍣</span>
+              <div class="spot-info">
+                <div class="spot-name">츠키지 외시장 (築地場外市場)</div>
+                <div class="spot-desc">신선 해산물 · 타마고야키 · 점심 코스</div>
+                <div class="spot-chips"><span class="chip chip-food">점심</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="ginza">
+              <span class="spot-icon">🏬</span>
+              <div class="spot-info">
+                <div class="spot-name">긴자 (銀座)</div>
+                <div class="spot-desc">도쿄 최고급 쇼핑 · 무지 긴자 · 이토야</div>
+                <div class="spot-chips"><span class="chip chip-paid">쇼핑</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="teamlab">
+              <span class="spot-icon">🌊</span>
+              <div class="spot-info">
+                <div class="spot-name">팀 라보 플래닛 (teamLab Planets)</div>
+                <div class="spot-desc">도요스 · 몰입형 디지털 아트 · 맨발 수공간</div>
+                <div class="spot-chips"><span class="chip chip-paid">¥3,200</span><span class="chip chip-night">야간 추천</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- D5 -->
+      <div class="tl-item reveal">
+        <div class="tl-left">
+          <div class="tl-dot c5">D5</div>
+          <div class="tl-date">8/5 화</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-day-title">마지막 쇼핑 &amp; 귀국</div>
+          <div class="tl-day-sub">신주쿠 면세 쇼핑 → 공항 이동 → 인천 귀국</div>
+          <div class="spots-grid">
+            <button type="button" class="spot-btn" data-spot="donki">
+              <span class="spot-icon">🛒</span>
+              <div class="spot-info">
+                <div class="spot-name">돈키호테 신주쿠점</div>
+                <div class="spot-desc">24시간 · 면세 ¥5,000 이상 · 화장품·과자·잡화</div>
+                <div class="spot-chips"><span class="chip chip-paid">면세</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="bic-camera">
+              <span class="spot-icon">📷</span>
+              <div class="spot-info">
+                <div class="spot-name">빅카메라 / 요도바시 카메라</div>
+                <div class="spot-desc">가전·카메라 면세 · 신주쿠역 주변</div>
+                <div class="spot-chips"><span class="chip chip-paid">면세</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+            <button type="button" class="spot-btn" data-spot="airport-return">
+              <span class="spot-icon">✈️</span>
+              <div class="spot-info">
+                <div class="spot-name">공항 이동 &amp; 귀국</div>
+                <div class="spot-desc">출발 3시간 전 공항 도착 권장</div>
+                <div class="spot-chips"><span class="chip chip-paid">N'EX / 버스</span></div>
+              </div>
+              <span class="spot-arr">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="budget" class="section-wrap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="accent gold"></div>
+      <div><h2>예산 계획 (1인 기준)</h2><p class="section-sub">2025년 8월 기준 · 환율 약 900원/¥100 적용</p></div>
+    </div>
+    <div class="budget-wrap reveal">
+      <table class="budget-table">
+        <thead><tr><th>항목</th><th>세부 내용</th><th>예상 비용 (KRW)</th></tr></thead>
+        <tbody>
+          <tr><td>✈️ 항공권</td><td>인천 ↔ 나리타/하네다 왕복 (성수기 직항)</td><td>40 – 80만원</td></tr>
+          <tr><td>🏨 숙박</td><td>신주쿠 3성급 4박 (¥10,000~15,000/박)</td><td>36 – 54만원</td></tr>
+          <tr><td>🍜 식비</td><td>1일 ¥3,000~6,000 · 편의점+라멘+스시</td><td>14 – 27만원</td></tr>
+          <tr><td>🚇 교통</td><td>IC카드 충전 + N'EX 왕복 ¥4,000~</td><td>7 – 13만원</td></tr>
+          <tr><td>🎫 관광 입장</td><td>스카이트리 + 시부야스카이 + 팀라보 등</td><td>9 – 15만원</td></tr>
+          <tr><td>🛍️ 쇼핑</td><td>면세 기념품 · 화장품 · 가전 (예산별)</td><td>10 – 40만원</td></tr>
+          <tr><td colspan="2"><strong>💴 총 예상 비용 (1인)</strong></td><td><strong>116 – 229만원</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="tips" class="section-wrap bg-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="accent teal"></div>
+      <div><h2>8월 도쿄 꿀팁</h2><p class="section-sub">현지에서 바로 쓸 수 있는 실용 정보</p></div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">🥵</div>
+        <h3>8월 폭염 대비</h3>
+        <p>평균 최고 33°C, 습도 80% 이상. 양산·부채·접이식 우산 필수. 야외 활동은 오전과 저녁에 집중하고 오후 2~5시는 실내 박물관·쇼핑몰 활용 권장.</p>
+      </div>
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">💳</div>
+        <h3>IC카드 (스이카 / 파스모)</h3>
+        <p>공항 도착 후 즉시 구매. 지하철·버스·편의점·자판기까지 전국 어디서나 사용 가능. 스마트폰 앱(Apple Pay Suica 등)으로도 발급 가능.</p>
+      </div>
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">🎆</div>
+        <h3>여름 마츠리 &amp; 불꽃축제</h3>
+        <p>8월은 각 지역 여름 축제(마츠리) 성수기. 유카타(浴衣)를 입은 인파가 곳곳에. 스미다가와 불꽃축제(隅田川花火大会)는 7월 말 개최 — 일정 사전 확인 필수.</p>
+      </div>
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">🧳</div>
+        <h3>코인로커 &amp; 짐 배송</h3>
+        <p>신주쿠·도쿄역 코인로커에 짐 맡기면 관광 동선이 자유로워집니다 (¥300~700). 호텔 간 짐 이동은 야마토 운송(クロネコヤマト) 이용 시 편리.</p>
+      </div>
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">🗺️</div>
+        <h3>교통 앱 필수 설치</h3>
+        <p>구글맵 오프라인 지도 + Yahoo! 乗換案内(환승 안내 앱). 도쿄 지하철은 노선이 복잡하므로 환승 앱이 필수. eSIM 또는 포켓 와이파이 사전 준비.</p>
+      </div>
+      <div class="tip-card reveal">
+        <div class="tip-card-icon">🍱</div>
+        <h3>편의점 음식 활용</h3>
+        <p>7-Eleven·Lawson·FamilyMart의 도시락·오니기리·커피 품질이 높습니다. 한 끼 ¥300~600으로 해결 가능. 귀국 선물로 편의점 과자·라멘도 인기.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>🗼 8월 도쿄 4박5일 여행 계획</strong><br>
+  2025년 8월 1일(금) – 5일(화) · Claude Code로 생성<br>
+  실제 가격·영업시간은 방문 전 공식 사이트에서 반드시 확인하세요
+</footer>
+
+<!-- DRAWER OVERLAY -->
+<div class="dr-overlay" id="drOverlay" aria-hidden="true"></div>
+
+<!-- RIGHT DRAWER -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle">
+  <div class="dr-head">
+    <span class="dr-head-icon" id="drIcon">🗼</span>
+    <div class="dr-head-info">
+      <div class="dr-area" id="drArea"></div>
+      <div class="dr-title" id="drTitle"></div>
+    </div>
+    <button type="button" class="dr-close" id="drClose" aria-label="닫기">✕</button>
+  </div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
+
+<script>
+(function(){
+'use strict';
+
+/* ── 명소 데이터 ────────────────────────────────────────────────────────── */
+var D = {
+  narita:{
+    icon:'✈️',area:'교통',name:'나리타 / 하네다 공항 입국',
+    hours:'24시간',price:"N'EX 편도 ¥3,070 · 리무진버스 ¥1,000~3,200",
+    access:"나리타→신주쿠 N'EX 약 1시간 30분 · 하네다→신주쿠 리무진버스 약 45분",
+    tags:['Visit Japan Web 사전 등록','환전소 도착층','IC카드 자판기'],
+    desc:"나리타 공항은 1·2·3 터미널로 구성. 입국 후 1층 도착 로비에서 N'EX(나리타 익스프레스) 또는 리무진버스 탑승. 하네다는 도심 접근성이 뛰어나 도쿄 모노레일·케이큐선·버스로 30~45분이면 신주쿠 도달. 8월 성수기는 입국심사에 30~60분 소요될 수 있습니다.",
+    tip:"Visit Japan Web에 사전 등록하면 입국심사·세관 신고를 QR코드 한 장으로 처리 가능해 대기 시간 단축. IC카드(Suica)는 공항 도착층 JR 자판기에서 바로 구매하세요."
+  },
+  'shinjuku-hotel':{
+    icon:'🏨',area:'신주쿠',name:'신주쿠 호텔 체크인',
+    hours:'체크인 15:00 / 체크아웃 11:00 (호텔마다 다름)',price:'¥8,000~20,000/박 (성수기 기준)',
+    access:'신주쿠역 동·서쪽 출구에서 도보 5~15분 권역 추천',
+    tags:['역세권 우선','조식 포함 여부 확인','짐 보관 서비스'],
+    desc:'신주쿠는 도쿄 관광의 허브. 지하철로 어디든 30분 내외 접근 가능. 동쪽(가부키초 인근, 활기찬 분위기)과 서쪽(도청·오피스 지구, 조용함) 중 취향에 맞게 선택. 예약 추천: Booking.com, Agoda, Jalan(일본 국내 특가).',
+    tip:'8월 성수기라 3개월 전 예약 권장. 얼리 체크인이 필요하면 사전 요청하거나 짐만 프런트에 맡기고 먼저 관광 시작. 호텔 근처 24시간 편의점 위치를 체크인 시 확인해두면 편리합니다.'
+  },
+  omoide:{
+    icon:'🍢',area:'신주쿠',name:'오모이데 요코초 (思い出横丁)',
+    hours:'17:00~24:00 (가게마다 상이)',price:'야키토리 1꼬치 ¥200~500 · 1인 ¥2,000~4,000',
+    access:'신주쿠역 서쪽 출구에서 도보 1분',
+    tags:['야키토리 성지','좁은 골목','현금 전용 가게 多','연기·활기'],
+    desc:'2차 세계대전 이후 형성된 노상 포장마차 골목. 좁은 통로에 30여 개 작은 가게가 빽빽이 들어서 있으며, 닭꼬치(야키토리)·내장구이(모츠야키)를 숯불에 구워내는 서민적 분위기가 매력. 연기와 열기 속에서 생맥주 한잔이 도쿄 첫날을 완성합니다.',
+    tip:'자리가 워낙 좁아 1~2인 방문이 편리. 현금만 받는 가게가 많으니 ¥5,000~10,000 소액 현금 준비. 일본어 메뉴가 많으므로 구글 렌즈 번역 앱 활용 추천.'
+  },
+  tocho:{
+    icon:'🏙️',area:'신주쿠',name:'도쿄 도청 전망대 (都庁展望台)',
+    hours:'09:00~22:30 (화요일 휴관)',price:'무료',
+    access:'신주쿠역 서쪽 출구 도보 10분 · 도에이 오에도선 도청마에역 직결',
+    tags:['무료 야경 명소','243m','날씨 맑은 날 후지산 조망'],
+    desc:'도쿄 도청 45층(243m) 북쪽·남쪽 두 개의 전망대. 무료임에도 도쿄 시내 360° 파노라마를 제공하며, 맑은 날에는 후지산도 보입니다. 야간 조명이 아름다워 시부야 스카이 전 무료 버전으로 방문해도 충분히 만족스럽습니다.',
+    tip:'8월 저녁 7~8시 방문 시 선셋과 야경을 함께 즐길 수 있습니다. 북쪽 전망대는 화요일 휴관, 남쪽은 월·수 휴관이므로 방문 전 확인 필수. 줄이 거의 없어 기다림 없이 바로 입장 가능.'
+  },
+  sensoji:{
+    icon:'⛩️',area:'아사쿠사',name:'센소지 (浅草寺)',
+    hours:'본당 06:00~17:00 (외부 경내 24시간)',price:'무료',
+    access:'도에이 아사쿠사선 아사쿠사역 도보 5분 · 도쿄 메트로 긴자선 아사쿠사역 도보 5분',
+    tags:['628년 창건','오미쿠지 체험','카미나리몬 제등','아침 방문 추천'],
+    desc:'도쿄에서 가장 오래된 사원(628년 창건). 카미나리몬(雷門)의 거대한 붉은 제등이 상징이며, 본당까지 이어지는 나카미세 거리에 약 90개 기념품 가게가 늘어서 있습니다. 8월 성수기에는 낮에 관광객이 극심하게 몰리므로 이른 아침 방문이 필수.',
+    tip:'오미쿠지(운세 뽑기, ¥100) 체험 필수. 大吉(대길) → 가져가기, 凶(흉) → 경내에 묶어두기. 아침 8시 이전에 가면 인파 없이 경내를 여유롭게 즐길 수 있습니다. 본당 내부 촬영은 금지.'
+  },
+  nakamise:{
+    icon:'🛍️',area:'아사쿠사',name:'나카미세 거리 (仲見世通り)',
+    hours:'10:00~19:00 (가게마다 상이)',price:'닝교야키 6개 ¥800~ · 기념품 ¥500~5,000',
+    access:'센소지 카미나리몬~본당 사이 250m',
+    tags:['기념품 쇼핑','닝교야키(찐빵 과자)','사탕','전통 부채·칠보'],
+    desc:'카미나리몬부터 본당까지 이어지는 250m 상점가에 약 90개 기념품 가게가 밀집. 닝교야키(人形焼), 인절미, 전통 부채(扇子), 유리 풍경(風鈴) 등이 인기. 아사쿠사 방문의 필수 코스.',
+    tip:'닝교야키는 갓 구운 것이 따뜻하고 맛있습니다. 일부 가게는 현금만 받으므로 소액 현금 준비. 귀국 선물용 과자는 수량 많은 도매상가 쪽이 더 저렴하니 비교해보세요.'
+  },
+  ueno:{
+    icon:'🌳',area:'우에노',name:'우에노 공원 & 국립박물관',
+    hours:'공원 05:00~23:00 · 박물관 09:30~17:00 (월요일 휴관)',price:'공원 무료 · 도쿄 국립박물관 ¥1,000',
+    access:'JR 우에노역 공원 출구 도보 1분',
+    tags:['국립박물관 ¥1,000','공원 무료','여름 연꽃 명소','동물원'],
+    desc:'도쿄 최대 공원. 도쿄 국립박물관·동물원·도립 미술관이 모여 있습니다. 8월에는 불인지(蓮池)에 연꽃이 만개해 장관. 도쿄 국립박물관은 일본 고대~근대 예술품을 소장한 일본 최대 박물관입니다.',
+    tip:'8월 야외는 그늘이 없어 뜨거우므로 오전 일찍 또는 박물관 내부에서 시간을 보내는 것을 권장. 박물관 정원에 카페가 있어 잠깐 쉬기 좋습니다.'
+  },
+  akihabara:{
+    icon:'🎮',area:'아키하바라',name:'아키하바라 (秋葉原)',
+    hours:'11:00~20:00 (가게마다 상이)',price:'구경 무료 · 가전 면세 구매 가능',
+    access:'JR 아키하바라역 전기가이 출구 바로',
+    tags:['가전 면세','애니·피규어','레트로 게임','메이드 카페'],
+    desc:'세계적인 전자제품·애니메이션·만화 성지. 면세 가전(이어폰·카메라·게이밍 기기) 구입, 애니메이션 피규어·동인지 탐방, 레트로 게임 발굴을 한 곳에서 즐길 수 있습니다. 메이드 카페(めいどりーみん 등)에서 독특한 경험도 가능.',
+    tip:'가전 구매 시 반드시 여권 지참하여 면세 수속. 요도바시 카메라 아키하바라점이 면세·가격 경쟁력 모두 우수. 메이드 카페는 입장료+음료 별도로 ¥1,500~3,000 예산 잡기.'
+  },
+  meiji:{
+    icon:'🌿',area:'하라주쿠',name:'메이지 신궁 (明治神宮)',
+    hours:'일출~일몰 (계절별 변동)',price:'무료 (내원 ¥500)',
+    access:'JR 하라주쿠역 서쪽 출구 도보 1분 · 지요다선 메이지진구마에역 도보 5분',
+    tags:['울창한 숲','도심 힐링','메이지 천황 헌정','8월 그늘 명소'],
+    desc:'메이지 천황과 쇼켄 황태후를 모신 신사. 도쿄 한복판에 있으면서도 70만 평의 울창한 숲으로 둘러싸여 있어 8월 폭염 속 자연 에어컨 역할을 합니다. 참배길 양쪽으로 봉납된 술통이 줄지어 인증샷 포인트.',
+    tip:'하라주쿠역에서 내리면 즉시 숲이 시작됩니다. 내부 호수(御苑) 정원은 별도 ¥500 입장료. 관광 후 도보 5분이면 타케시타 거리와 오모테산도 연결.'
+  },
+  takeshita:{
+    icon:'🌈',area:'하라주쿠',name:'타케시타 거리 (竹下通り)',
+    hours:'10:00~20:00',price:'크레이프 ¥400~800',
+    access:'JR 하라주쿠역 타케시타 출구 바로',
+    tags:['Marion Crepes 원조','팝 패션','Z세대 문화','포토부스(프리쿠라)'],
+    desc:'400m 좁은 골목에 크레이프 가게·빈티지 의류·팝 패션·팬시 소품 가게가 가득. 하라주쿠 크레이프는 도쿄의 아이코닉 간식으로 Marion Crepes가 원조로 유명합니다. 거리 끝에서 오모테산도 고급 쇼핑 지구로 자연스럽게 연결.',
+    tip:'주말은 인파가 극심하므로 평일 오전 방문 권장. 크레이프 외에 곤약 젤리·포토부스(프리쿠라)·인형 뽑기 등 체험 가득. 지나치게 자극적인 색과 디자인의 의류는 귀국 후 생각보다 덜 입게 되니 신중하게 구매.'
+  },
+  scramble:{
+    icon:'🚶',area:'시부야',name:'시부야 스크램블 교차로',
+    hours:'24시간',price:'무료',
+    access:'JR·도쿄 메트로 시부야역 하치코 출구 바로',
+    tags:['한 번에 3,000명 동시 횡단','하치코 동상','스타벅스 2F 전망','야간 네온'],
+    desc:'신호가 바뀌면 모든 방향에서 동시에 사람이 교차하는 세계에서 가장 바쁜 교차로. 시부야 스크램블 스퀘어, 스타벅스 2층, 마크 시티 내 카페에서 내려다보는 뷰가 명물. 인근 하치코 충견 동상은 기념사진 필수 장소.',
+    tip:'저녁 7~9시 네온이 켜질 때 방문하면 더욱 화려합니다. 스타벅스는 혼잡해 자리 잡기 어려우므로 인근 건물 내 카페나 바에서도 조망 가능. 8월 폭염에는 냉방 쇼핑몰에서 잠시 더위를 피해가며 탐방.'
+  },
+  'shibuya-sky':{
+    icon:'🌆',area:'시부야',name:'시부야 스카이 (SHIBUYA SKY)',
+    hours:'10:00~22:30 (최종 입장 21:30)',price:'¥2,000 (평일) · ¥2,200 (주말·공휴일)',
+    access:'JR 시부야역 남쪽 출구 · 시부야 스크램블 스퀘어 최상층 45~46F',
+    tags:['229m 야외 전망대','사전 예약 필수','황혼 타임 베스트','바람 강함 모자 주의'],
+    desc:'시부야 스크램블 스퀘어 45~46층, 229m 야외 전망대. 도쿄 360° 파노라마는 물론 스크램블 교차로를 직접 내려다볼 수 있습니다. 일몰 1시간 전 입장이 석양+야경을 모두 즐길 수 있는 최고 타이밍.',
+    tip:'사전 온라인 예약 필수 (shibuya-sky.jp). 8월 주말 황혼 시간대 티켓은 수 주 전에 매진. 출발 전 예약해두세요. 야외 공간이라 바람이 강해 모자 날림 주의. 야경 촬영은 아이폰 야간 모드 활용.'
+  },
+  skytree:{
+    icon:'🗼',area:'스카이트리',name:'도쿄 스카이트리 (東京スカイツリー)',
+    hours:'09:00~21:00 (최종 입장 20:00)',price:'제1전망대 ¥2,100 · 제2전망대 ¥3,100 (현장 +¥200)',
+    access:'도부 스카이트리선 도쿄스카이트리역 바로 앞 · 도에이 아사쿠사선 오시아게역 A3 출구',
+    tags:['634m 세계 2위','두 개 전망대','소라마치 쇼핑몰','아사쿠사와 함께 사진'],
+    desc:'높이 634m로 자립식 전파탑 세계 2위. 350m 제1전망대(텐보 데크)와 450m 제2전망대(텐보 갤러리)로 구성. 맑은 날에는 후지산·닛코까지 보입니다. 탑 하부 소라마치 쇼핑몰에서 기념품·식사 가능.',
+    tip:'온라인 사전 구매 시 ¥200 할인. 아침이나 저녁 입장 시 혼잡도 낮음. 제1전망대 유리 바닥(스카이 유리 통로) 체험이 짜릿. 스카이트리 남측 강가에서 찍으면 아사쿠사 센소지와 함께 아름다운 구도 완성.'
+  },
+  tsukiji:{
+    icon:'🍣',area:'츠키지',name:'츠키지 외시장 (築地場外市場)',
+    hours:'05:00~14:00 (가게마다 상이)',price:'카이센동 ¥1,500~4,000',
+    access:'도에이 오에도선 츠키지시장역 A1 도보 2분 · 히비야선 츠키지역 1번 출구 도보 3분',
+    tags:['신선 해산물','타마고야키','오전 방문 추천','인기 가게 줄 필수'],
+    desc:'도요스로 이전한 시장 옆 외부 상가. 타마고야키(달걀말이)·참치 덮밥·생굴·해산물 꼬치 등을 즐길 수 있습니다. 오전 일찍 방문할수록 신선하고 대기 줄도 짧습니다.',
+    tip:'인기 참치 덮밥 가게(다이와스시 등)는 오전 7시에도 줄이 30~60분. 타마고야키는 즉석 시식 가능 가게 多. 대부분의 가게는 점심 전 마감하므로 오전 9~11시 방문 추천. 현금 전용 가게가 많습니다.'
+  },
+  ginza:{
+    icon:'🏬',area:'긴자',name:'긴자 (銀座)',
+    hours:'쇼핑 11:00~21:00 · 도보 24시간',price:'쇼핑 예산별 (구경 무료)',
+    access:'도쿄 메트로 긴자선 긴자역 직결',
+    tags:['무지 긴자 플래그십','이토야 문구','주말 보행자 천국','데파치카 (지하 식품관)'],
+    desc:'도쿄 최고급 쇼핑 지구. 루이비통·에르메스·샤넬 등 명품 브랜드와 무지(MUJI) 긴자 플래그십(6층), 이토야 문구 전문점이 밀집. 주말 낮에는 주요 도로가 보행자 전용으로 전환됩니다.',
+    tip:'무지 긴자에서 여행 기념 아이템 쇼핑 추천. 이토야는 일본 프리미엄 문구 천국 — 독특한 선물 찾기 좋음. 8월 여름 세일 기간 백화점 지하(데파치카)에서 고급 도시락·과자 구매도 즐거운 경험.'
+  },
+  teamlab:{
+    icon:'🌊',area:'도요스',name:'팀 라보 플래닛 (teamLab Planets)',
+    hours:'09:00~21:00',price:'성인 ¥3,200 (사전 예약 필수)',
+    access:'유리카모메 신토요스역 도보 5분',
+    tags:['몰입형 디지털 아트','맨발 수공간','사진·영상 촬영 OK','약 1.5~2시간'],
+    desc:'물과 빛을 테마로 한 몰입형 디지털 아트 뮤지엄. 발목까지 잠기는 수공간, 빛의 폭포, 무한 거울 공간 등 독특한 전시로 구성. 인스타그램 최다 업로드 미술관 중 하나.',
+    tip:'사전 온라인 예약 필수 (planets.teamlab.art). 8월 주말은 수 주 전 매진. 수공간 때문에 짧은 반바지·치마 착용 권장 (젖어도 되는 복장). 입장 전 짐은 코인로커에 맡기고 소지품 최소화.'
+  },
+  donki:{
+    icon:'🛒',area:'신주쿠',name:'돈키호테 신주쿠점 (ドン・キホーテ)',
+    hours:'24시간',price:'면세: ¥5,000 이상 구매 시 약 10% 환급',
+    access:'신주쿠역 동쪽 출구 도보 5분 · 가부키초 내',
+    tags:['24시간 영업','면세 쇼핑','화장품·과자·잡화','귀국 선물 쇼핑'],
+    desc:'일본 종합 할인 매장. 화장품(코세·캉캉·시세이도), 과자·라멘 등 식품, 가전, 의류까지 모든 것을 판매. 24시간 영업으로 야간 쇼핑 가능. 귀국 선물 쇼핑의 정석.',
+    tip:'결제 줄이 길 수 있으니 여유 시간 확보. 면세 카운터는 별도 창구 — 쇼핑 후 카운터에서 여권 제시 후 서류 작성. 신주쿠 외에도 이케부쿠로·아키하바라·도쿄역 인근 지점 이용 가능.'
+  },
+  'bic-camera':{
+    icon:'📷',area:'신주쿠',name:'빅카메라 / 요도바시 카메라',
+    hours:'10:00~22:00',price:'면세: ¥10,000 이상 구매 시 5~8%',
+    access:'빅카메라: 신주쿠 동쪽 출구 도보 2분 · 요도바시: 서쪽 출구 도보 2분',
+    tags:['가전 면세','카메라·렌즈','이어폰·드라이어','포인트 카드'],
+    desc:'일본 최대 가전 양판점. 카메라·렌즈·이어폰·면도기·드라이어 등 일본 브랜드 제품을 국내보다 저렴하게 구입 가능. 요도바시 카메라 아키하바라점은 9층 규모로 세계 최대급 IT 기기 매장.',
+    tip:'면세 수속은 여권 지참 필수. 포인트 카드 10% 적립과 면세 동시 적용 불가 — 어느 쪽이 유리한지 비교 후 선택. 신주쿠 서쪽 요도바시 vs 동쪽 빅카메라 가격 비교 후 구매 추천.'
+  },
+  'airport-return':{
+    icon:'✈️',area:'교통',name:'공항 이동 & 귀국',
+    hours:'출발 3시간 전 공항 도착 권장',price:"N'EX 편도 ¥3,070 · 리무진버스 ¥3,100~3,600",
+    access:"신주쿠→나리타: N'EX 약 1시간 20분 · 신주쿠→하네다: 버스 약 45분",
+    tags:['3시간 전 공항','IC카드 잔액 정산','면세구역 쇼핑','엔화 잔돈 소진'],
+    desc:'귀국 당일은 여유있게 행동. 대형 캐리어는 전날 야마토 운송을 통해 공항으로 미리 발송 가능(¥1,500~2,000). 코인로커 짐은 여유있게 찾아 공항으로 이동.',
+    tip:'나리타 공항 면세구역에서 마지막 쇼핑 가능. IC카드(Suica 등) 잔액은 카드 반납(¥500 보증금 환급) 또는 다음 방문을 위해 보관. 남은 엔 동전은 자판기·편의점에서 소진하거나 공항 환전소에서 원화로 교환.'
+  }
+};
+
+/* ── 드로어 DOM ────────────────────────────────────────────────────────── */
+var overlay  = document.getElementById('drOverlay');
+var drawer   = document.getElementById('drawer');
+var drIcon   = document.getElementById('drIcon');
+var drArea   = document.getElementById('drArea');
+var drTitle  = document.getElementById('drTitle');
+var drBody   = document.getElementById('drBody');
+var drClose  = document.getElementById('drClose');
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function openDrawer(key) {
+  var s = D[key]; if (!s) return;
+  drIcon.textContent  = s.icon;
+  drArea.textContent  = s.area;
+  drTitle.textContent = s.name;
+
+  var tagsHtml = (s.tags||[]).map(function(t){ return '<span class="dr-tag">'+esc(t)+'</span>'; }).join('');
+
+  drBody.innerHTML =
+    '<div class="dr-meta">' +
+    '  <div class="dr-meta-item"><div class="dr-meta-lbl">⏰ 운영 시간</div><div class="dr-meta-val">'+esc(s.hours)+'</div></div>' +
+    '  <div class="dr-meta-item"><div class="dr-meta-lbl">💴 비용</div><div class="dr-meta-val">'+esc(s.price)+'</div></div>' +
+    '</div>' +
+    '<div class="dr-sec"><div class="dr-sec-title">교통 · 접근</div><div class="dr-desc">'+esc(s.access)+'</div></div>' +
+    (tagsHtml ? '<div class="dr-tags">'+tagsHtml+'</div>' : '') +
+    '<div class="dr-sec"><div class="dr-sec-title">상세 설명</div><div class="dr-desc">'+esc(s.desc)+'</div></div>' +
+    '<div class="dr-sec"><div class="dr-sec-title">꿀팁 · 주의사항</div><div class="dr-tip">'+esc(s.tip)+'</div></div>';
+
+  overlay.classList.add('open');
+  drawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  drClose.focus();
+}
+
+function closeDrawer() {
+  overlay.classList.remove('open');
+  drawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.spot-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){ openDrawer(this.dataset.spot); });
+});
+drClose.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+});
+
+/* ── Reveal ─────────────────────────────────────────────────────────────── */
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} });
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+}
+
+/* ── 네비 하이라이트 ─────────────────────────────────────────────────── */
+var navAs = document.querySelectorAll('.nav-links a');
+if ('IntersectionObserver' in window) {
+  var navIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id;
+        navAs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});
+      }
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('section[id]').forEach(function(s){navIO.observe(s);});
+}
+
+}());
+</script>
+</body>
+</html>
