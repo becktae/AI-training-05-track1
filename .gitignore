@@ -1,0 +1,14 @@
+# 환경변수 및 시크릿 — 절대 커밋 금지
+.env
+.env.local
+.env.*.local
+
+# Claude Code 로컬 설정
+.claude.json
+
+# 로그
+.agent_logs/
+*.log
+
+# macOS
+.DS_Store

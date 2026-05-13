@@ -47,6 +47,14 @@ Firecrawl API(`FIRECRAWL_API_KEY`)를 사용하는 Python 스켈레톤. `main.py
 5. 실행/검증
 6. 결과 요약
 
+## Security Rules — API Key & Secrets
+
+- API Key는 `.env`에서만 읽는다. Claude Code가 세션 시작 시 자동으로 환경변수로 로드한다.
+- API Key 값은 절대 출력하거나 로그에 기록하지 않는다.
+- `.mcp.json`, `.claude.json`, 코드 파일에 API Key를 직접 하드코딩하지 않는다.
+- `.env`는 `.gitignore`에 포함되어 있으므로 절대 커밋하지 않는다.
+- 시크릿이 포함된 파일을 `git add` 하기 전 반드시 `.gitignore` 적용 여부를 확인한다.
+
 ## Result Report Format
 
 작업 완료 후 아래 항목을 요약한다.
